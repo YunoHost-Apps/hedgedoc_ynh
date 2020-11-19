@@ -45,6 +45,7 @@ Vous pouvez configurer HedgeDoc en modifiant le fichier `/var/www/hedgedoc/confi
 ## Liens
 
  * Signaler un bug : https://github.com/YunoHost-Apps/hedgedoc_ynh/issues
+ * Site de l'application : https://hedgedoc.org
  * Dépôt de l'application principale : https://github.com/hedgedoc/hedgedoc
  * Site web YunoHost : https://yunohost.org/
 

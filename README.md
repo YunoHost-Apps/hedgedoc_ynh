@@ -45,6 +45,7 @@ You can configure HedgeDoc by editing this file `/var/www/hedgedoc/config.json` 
 ## Links
 
  * Report a bug: https://github.com/YunoHost-Apps/hedgedoc_ynh/issues
+ * App website: https://hedgedoc.org
  * Upstream app repository: https://github.com/hedgedoc/hedgedoc
  * YunoHost website: https://yunohost.org/
 
