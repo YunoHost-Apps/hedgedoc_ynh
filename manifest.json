@@ -1,0 +1,58 @@
+{
+    "name": "HedgeDoc",
+    "id": "hedgedoc",
+    "packaging_format": 1,
+    "description": {
+        "en": "Collaborative editor to work on notes written in Markdown",
+        "fr": "Éditeur collaboratif pour travailler sur des notes en Markdown"
+    },
+    "version": "1.6.0~ynh5",
+    "url": "https://github.com/hedgedoc/hedgedoc",
+    "license": "AGPL-3.0-only",
+    "maintainer": {
+        "name": ""
+    },
+    "requirements": {
+        "yunohost": ">= 4.0.0"
+    },
+    "multi_instance": true,
+    "services": [
+        "nginx"
+    ],
+    "arguments": {
+        "install" : [
+            {
+                "name": "domain",
+                "type": "domain",
+                "ask": {
+                    "en": "Choose a domain name for HedgeDoc",
+                    "fr": "Choisissez un nom de domaine pour HedgeDoc"
+                },
+                "example": "domain.org"
+            },
+            {
+                "name": "path",
+                "type": "path",
+                "ask": {
+                    "en": "Choose a path for HedgeDoc",
+                    "fr": "Choisissez un chemin pour HedgeDoc"
+                },
+                "example": "/hedgedoc",
+                "default": "/hedgedoc"
+            },
+            {
+                "name": "is_public",
+                "type": "boolean",
+                "ask": {
+                    "en": "Is it a public site?",
+                    "fr": "Est-ce un site public ?"
+                },
+                "help": {
+                    "en": "If enabled, HedgeDoc will be accessible by people who do not have an account. This can be changed later via the webadmin.",
+                    "fr": "Si cette case est cochée, HedgeDoc sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
+                },
+                "default": true
+            }
+        ]
+    }
+}

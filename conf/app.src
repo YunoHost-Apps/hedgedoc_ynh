@@ -1,0 +1,6 @@
+SOURCE_URL=https://github.com/hedgedoc/server/archive/1.6.0.tar.gz
+SOURCE_SUM=5cb53b9441817f2e17f998057174f89213c96924d55b444bdaac35d0e48fab03
+SOURCE_SUM_PRG=sha256sum
+SOURCE_FORMAT=tar.gz
+SOURCE_IN_SUBDIR=true
+SOURCE_FILENAME=

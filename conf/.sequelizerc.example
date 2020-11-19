@@ -1,0 +1,8 @@
+var path = require('path');
+
+module.exports = {
+    'config':          path.resolve('config.json'),
+    'migrations-path': path.resolve('lib', 'migrations'),
+    'models-path':     path.resolve('lib', 'models'),
+    'url':             'postgres://__DB_USER__:__DB_PASS__@localhost:5432/__DB_NAME__'
+}
