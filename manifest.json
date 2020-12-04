@@ -10,7 +10,7 @@
     "url": "https://github.com/hedgedoc/hedgedoc",
     "license": "AGPL-3.0-only",
     "maintainer": {
-        "name": ""
+        "name": "eric_G"
     },
     "requirements": {
         "yunohost": ">= 4.0.8"
