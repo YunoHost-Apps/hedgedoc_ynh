@@ -177,7 +177,7 @@ chown -R $app:$app $final_path
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=2
 
-yunohost service add $app --description="Collaborative Markdown notes" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="collaborative Markdown editor" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
