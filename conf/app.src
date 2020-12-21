@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/hedgedoc/hedgedoc/archive/1.7.0-rc2.tar.gz
-SOURCE_SUM=d3cb31bc036d5dbc504311af2ba4d2f3f63f373157740ff20f946b3d65f0bfcf
+SOURCE_URL=https://github.com/hedgedoc/hedgedoc/archive/1.7.0.tar.gz
+SOURCE_SUM=22c0c13d215669b4addb54d6b021b79f698f69c897cb2f48363495381055b1a8
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
