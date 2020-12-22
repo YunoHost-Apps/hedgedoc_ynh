@@ -11,7 +11,7 @@ Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install
 ## Vue d'ensemble
 HedgeDoc est un service web de traitement de texte collaboratif en temps réel. Il utilise le langage Markdown.
 
-**Version incluse :** 1.6.0
+**Version incluse :** 1.7.0
 
 ## Captures d'écran
 
