@@ -42,6 +42,10 @@ Vous pouvez configurer HedgeDoc en modifiant le fichier `/var/www/hedgedoc/confi
 * x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/hedgedoc%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
 * ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/hedgedoc%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/hedgedoc/)
 
+## Limitations
+
+* HedgeDoc a besoin de plus de 3 Go de RAM pour être installé.
+
 ## Liens
 
  * Signaler un bug : https://github.com/YunoHost-Apps/hedgedoc_ynh/issues
