@@ -11,7 +11,7 @@ Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install
 ## Vue d'ensemble
 HedgeDoc est un service web de traitement de texte collaboratif en temps réel. Il utilise le langage Markdown.
 
-**Version incluse :** 1.7.0
+**Version incluse :** 1.7.1
 
 ## Captures d'écran
 
@@ -41,6 +41,10 @@ Vous pouvez configurer HedgeDoc en modifiant le fichier `/var/www/hedgedoc/confi
 
 * x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/hedgedoc%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
 * ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/hedgedoc%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/hedgedoc/)
+
+## Limitations
+
+* HedgeDoc a besoin de plus de 3 Go de RAM pour être installé.
 
 ## Liens
 
