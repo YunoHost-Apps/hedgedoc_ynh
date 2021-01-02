@@ -126,7 +126,6 @@ then
 	pushd "$final_path" || ynh_die
 		ynh_use_nodejs
 		bin/setup
-		ynh_exec_warn_less yarn run build
 	popd || ynh_die
 fi
 
