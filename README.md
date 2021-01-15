@@ -11,7 +11,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 ## Overview
 HedgeDoc is a real-time collaborative word processing web service. It uses Markdown language.
 
-**Shipped version:** 1.7.1
+**Shipped version:** 1.7.2
 
 ## Screenshots
 
