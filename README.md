@@ -13,6 +13,9 @@ HedgeDoc is a real-time collaborative word processing web service. It uses Markd
 
 **Shipped version:** 1.7.2
 
+**NB:** HedgeDoc is a former HackMD fork, called CodiMD, that was renamed HedgeDoc : https://hedgedoc.org/history/
+This is *not* the currently called CodiMD software.
+
 ## Screenshots
 
 ![](https://demo.hedgedoc.org/screenshot.png)
