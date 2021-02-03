@@ -12,6 +12,8 @@ Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install
 HedgeDoc est un service web de traitement de texte collaboratif en temps réel. Il utilise le langage Markdown.
 
 **Version incluse :** 1.7.2
+**NB:** HedgeDoc est l'ancier fork d'HackMD, nommé CodiMD, qui a été renommé HedgeDoc : https://hedgedoc.org/history/
+Ce n'est *pas* le logiciel actuellement appelé CodiMD.
 
 ## Captures d'écran
 
