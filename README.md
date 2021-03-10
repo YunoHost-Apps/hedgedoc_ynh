@@ -29,7 +29,7 @@ When you finished editing the configuration, for your changes to take effect, yo
 ## Documentation
 
  * Official documentation: https://github.com/hedgedoc/hedgedoc/tree/master/docs
- * YunoHost documentation: https://yunohost.org/#/app_hedgedoc
+ * YunoHost documentation: https://yunohost.org/en/app_hedgedoc
 
 ## YunoHost specific features
 

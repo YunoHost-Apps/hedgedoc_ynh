@@ -29,7 +29,7 @@ Lorsque vous avez terminé de modifier la configuration, pour que vos modificati
 ## Documentation
 
  * Documentation officielle : https://github.com/hedgedoc/hedgedoc/tree/master/docs
- * Documentation YunoHost : https://yunohost.org/#/app_hedgedoc_fr
+ * Documentation YunoHost : https://yunohost.org/fr/app_hedgedoc
 
 ## Caractéristiques spécifiques YunoHost
 
