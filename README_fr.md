@@ -11,6 +11,8 @@ Si vous n'avez pas YunoHost, consultez [le guide](https://yunohost.org/#/install
 ## Vue d'ensemble
 HedgeDoc est un service web de traitement de texte collaboratif en temps réel. Il utilise le langage Markdown.
 
+HedgeDoc ([anciennement connu sous le nom de CodiMD](https://hedgedoc.org/history/)) est un éditeur Markdown collaboratif open-source. Avec HedgeDoc, vous pouvez facilement collaborer sur des notes, des graphiques et même des présentations en temps réel. Tout ce que vous avez à faire est de partager votre lien de note avec vos collègues. 
+
 **Version incluse :** 1.7.2
 
 ## Captures d'écran
@@ -29,7 +31,7 @@ Lorsque vous avez terminé de modifier la configuration, pour que vos modificati
 ## Documentation
 
  * Documentation officielle : https://github.com/hedgedoc/hedgedoc/tree/master/docs
- * Documentation YunoHost : https://yunohost.org/#/app_hedgedoc_fr
+ * Documentation YunoHost : https://yunohost.org/fr/app_hedgedoc
 
 ## Caractéristiques spécifiques YunoHost
 
