@@ -30,8 +30,8 @@
             "addGoogleAnalytics": false
         },
         "db": {
-            "username": "__DB_USER__",
-            "password": "__DB_PASS__",
+            "username": "__DB_NAME__",
+            "password": "__DB_PWD__",
             "database": "__DB_NAME__",
             "host": "localhost",
             "port": "5432",
@@ -49,6 +49,3 @@
         }
     }
 }
-
-
-
