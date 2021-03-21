@@ -110,7 +110,7 @@ fi
 # CONFIGURE HEDGEDOC
 #=================================================
 
-ynh_backup_if_checksum_is_different --file="$final_path/config.json"
+#ynh_backup_if_checksum_is_different --file="$final_path/config.json"
 
 domain=$new_domain
 path_url=${new_path:1}
