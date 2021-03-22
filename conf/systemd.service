@@ -15,7 +15,6 @@ Restart=always
 PrivateTmp=true
 PrivateDevices=true
 
-PrivateDevices=true
 ProtectControlGroups=true
 ProtectHome=true
 ProtectKernelTunables=true
