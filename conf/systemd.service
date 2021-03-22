@@ -15,5 +15,12 @@ Restart=always
 PrivateTmp=true
 PrivateDevices=true
 
+PrivateDevices=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectSystem=full
+RestrictSUIDSGID=true
+
 [Install]
 WantedBy=multi-user.target
