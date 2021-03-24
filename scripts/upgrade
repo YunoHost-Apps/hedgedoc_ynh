@@ -159,6 +159,7 @@ ynh_script_progression --message="Securing files and directories..." --weight=1
 
 # Set permissions on app files
 chown -R $app:$app $final_path
+chmod o-rwx $final_path
 chmod 600 $final_path/.sequelizerc
 
 #=================================================
