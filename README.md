@@ -40,8 +40,8 @@ When you finished editing the configuration, for your changes to take effect, yo
 
 #### Supported architectures
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/hedgedoc%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/hedgedoc%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/hedgedoc/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/hedgedoc.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/hedgedoc.svg)](https://ci-apps-arm.yunohost.org/ci/apps/hedgedoc/)
 
 ## Limitations
 
