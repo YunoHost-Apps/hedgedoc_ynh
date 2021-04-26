@@ -139,8 +139,6 @@ path=${path_url:1}
 
 ynh_add_config --template="../conf/config.json.example" --destination="$final_path/config.json"
 
-ynh_add_config --template="../conf/.sequelizerc.example" --destination="$final_path/.sequelizerc"
-
 #=================================================
 # GENERIC FINALIZATION
 #=================================================
