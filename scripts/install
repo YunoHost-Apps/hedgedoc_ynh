@@ -139,8 +139,6 @@ path=${path_url:1}
 
 ynh_add_config --template="../conf/config.json.example" --destination="$final_path/config.json"
 
-ynh_add_config --template="../conf/.sequelizerc.example" --destination="$final_path/.sequelizerc"
-
 #=================================================
 # GENERIC FINALIZATION
 #=================================================
@@ -151,7 +149,7 @@ ynh_script_progression --message="Securing files and directories..." --weight=1
 # Set permissions to app files
 chown -R $app:$app $final_path
 chmod o-rwx $final_path
-chmod 600 $final_path/.sequelizerc
+chmod 600 $final_path/config.json
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
