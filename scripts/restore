@@ -74,7 +74,8 @@ ynh_script_progression --message="Restoring user rights..." --weight=2
 
 # Restore permissions on app files
 chown -R $app:$app $final_path
-chmod 600 $final_path/.sequelizerc
+chmod o-rwx $final_path
+chmod 600 $final_path/config.json
 
 #=================================================
 # SPECIFIC RESTORATION

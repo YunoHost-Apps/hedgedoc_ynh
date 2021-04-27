@@ -64,7 +64,7 @@ ynh_abort_if_errors
 #=================================================
 ynh_script_progression --message="Stopping a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action=stop --log_path="systemd"
+ynh_systemd_action --service_name=$app --action=stop --log_path=systemd
 
 #=================================================
 # CREATE DEDICATED USER
@@ -87,7 +87,6 @@ then
 	
 	# Backup the config file in the temp dir
 	cp -a "$final_path/config.json" "$tmpdir/config.json"
-	cp -a "$final_path/.sequelizerc" "$tmpdir/.sequelizerc"
 	
 	# Remove the app directory securely
 	ynh_secure_remove --file=$final_path
@@ -97,7 +96,6 @@ then
 
 	#Copy the admin saved settings from tmp directory to final path	
 	cp -a "$tmpdir/config.json" "$final_path/config.json" 
-	cp -a "$tmpdir/.sequelizerc" "$final_path/.sequelizerc"
 
 	# Remove the tmp directory securely
 	ynh_secure_remove --file="$tmpdir"
@@ -159,7 +157,8 @@ ynh_script_progression --message="Securing files and directories..." --weight=1
 
 # Set permissions on app files
 chown -R $app:$app $final_path
-chmod 600 $final_path/.sequelizerc
+chmod o-rwx $final_path
+chmod 600 $final_path/config.json
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST

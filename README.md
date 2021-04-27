@@ -6,12 +6,12 @@
 *[Lire ce readme en français.](./README_fr.md)*
 
 > *This package allows you to install HedgeDoc quickly and simply on a YunoHost server.  
-If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/install) to learn how to install it.*
+If you don't have YunoHost, please consult [the guide](https://yunohost.org/install) to learn how to install it.*
 
 ## Overview
 HedgeDoc ([formerly known as CodiMD](https://hedgedoc.org/history/)) is an open-source collaborative markdown editor. With HedgeDoc you can easily collaborate on notes, graphs and even presentations in real-time. All you need to do is to share your note-link to your co-workers, and they’re ready to go.
 
-**Shipped version:** 1.7.2
+**Shipped version:** 1.8.0
 
 ## Screenshots
 
@@ -40,8 +40,8 @@ When you finished editing the configuration, for your changes to take effect, yo
 
 #### Supported architectures
 
-* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/hedgedoc%20%28Apps%29.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
-* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/hedgedoc%20%28Apps%29.svg)](https://ci-apps-arm.yunohost.org/ci/apps/hedgedoc/)
+* x86-64 - [![Build Status](https://ci-apps.yunohost.org/ci/logs/hedgedoc.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
+* ARMv8-A - [![Build Status](https://ci-apps-arm.yunohost.org/ci/logs/hedgedoc.svg)](https://ci-apps-arm.yunohost.org/ci/apps/hedgedoc/)
 
 ## Limitations
 
