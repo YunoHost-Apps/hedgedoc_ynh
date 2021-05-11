@@ -82,23 +82,8 @@ if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Upgrading source files..." --weight=10
 
-	# Create a temporary directory
-	tmpdir="$(mktemp -d)"
-	
-	# Backup the config file in the temp dir
-	cp -a "$final_path/config.json" "$tmpdir/config.json"
-	
-	# Remove the app directory securely
-	ynh_secure_remove --file=$final_path
-
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir=$final_path
-
-	#Copy the admin saved settings from tmp directory to final path	
-	cp -a "$tmpdir/config.json" "$final_path/config.json" 
-
-	# Remove the tmp directory securely
-	ynh_secure_remove --file="$tmpdir"
+	ynh_setup_source --dest_dir=$final_path --keep="$final_path/config.json"
 fi
 
 #=================================================
@@ -120,7 +105,7 @@ ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
 # Install Yarn
-ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
+#ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
 
 #=================================================
 # SPECIFIC UPGRADE
