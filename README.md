@@ -11,7 +11,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/inst
 ## Overview
 HedgeDoc ([formerly known as CodiMD](https://hedgedoc.org/history/)) is an open-source collaborative markdown editor. With HedgeDoc you can easily collaborate on notes, graphs and even presentations in real-time. All you need to do is to share your note-link to your co-workers, and they’re ready to go.
 
-**Shipped version:** 1.8.0
+**Shipped version:** 1.8.2
 
 ## Screenshots
 
