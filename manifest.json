@@ -7,13 +7,21 @@
         "fr": "Éditeur collaboratif pour travailler sur des notes en Markdown"
     },
     "version": "1.8.2~ynh1",
-    "url": "https://github.com/hedgedoc/hedgedoc",
+    "url": "https://hedgedoc.org",
+    "upstream": {
+        "license": "free",
+        "website": "https://hedgedoc.org",
+        "demo": "https://demo.hedgedoc.org/",
+        "admindoc": "https://docs.hedgedoc.org/",
+        "userdoc": "https://yunohost.org/en/app_hedgedoc",
+        "code": "https://github.com/hedgedoc/hedgedoc"
+    },
     "license": "AGPL-3.0-only",
     "maintainer": {
         "name": "eric_G"
     },
     "requirements": {
-        "yunohost": ">= 4.1.7"
+        "yunohost": ">= 4.2.4"
     },
     "multi_instance": true,
     "services": [
