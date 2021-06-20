@@ -1,0 +1,27 @@
+[Unit]
+Description=HedgeDoc: collaborative Markdown notes frontend
+Documentation=https://github.com/hedgedoc/hedgedoc
+After=network.target postgresql.service __APP___backend.service
+
+[Service]
+Type=simple
+User=__APP__
+Group=__APP__
+WorkingDirectory=__FINALPATH__/frontend
+Environment="PATH=__ENV_PATH__"
+Environment="NODE_ENV=production"
+Environment="PORT=__PORT_FRONTEND__"
+Environment="REACT_APP_BACKEND_BASE_URL=http://localhost:__PORT_BACKEND__/"
+ExecStart=__FINALPATH__/frontend/node_modules/.bin/cross-env PORT=__PORT_FRONTEND__ REACT_APP_BACKEND_BASE_URL=http://localhost:__PORT_BACKEND__/ __FINAL_PATH__/frontend/node_modules/.bin/craco start
+Restart=always
+PrivateTmp=true
+PrivateDevices=true
+
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectSystem=full
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,5 +1,5 @@
 [Unit]
-Description=HedgeDoc: collaborative Markdown notes
+Description=HedgeDoc: collaborative Markdown notes backend
 Documentation=https://github.com/hedgedoc/hedgedoc
 After=network.target postgresql.service
 
@@ -7,10 +7,10 @@ After=network.target postgresql.service
 Type=simple
 User=__APP__
 Group=__APP__
-WorkingDirectory=__FINALPATH__
+WorkingDirectory=__FINALPATH__/backend
 Environment="PATH=__ENV_PATH__"
 Environment="NODE_ENV=production"
-ExecStart=__YNH_NPM__ start --production
+ExecStart=__YNH_NPM__ start
 Restart=always
 PrivateTmp=true
 PrivateDevices=true
