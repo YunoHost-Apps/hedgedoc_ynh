@@ -53,11 +53,15 @@ ynh_app_setting_set --app=$app --key=path --value=$path_url
 #=================================================
 # FIND AND OPEN A PORT
 #=================================================
-ynh_script_progression --message="Finding an available port..." --weight=2
+ynh_script_progression --message="Finding available ports..." --weight=2
 
-# Find an available port
-port=$(ynh_find_port --port=3000)
-ynh_app_setting_set --app=$app --key=port --value=$port
+# Find an available port for the backend
+port_backend=$(ynh_find_port --port=3000)
+ynh_app_setting_set --app=$app --key=port_backend --value=$port_backend
+
+# Find an available port for the frontend
+port_frontend=$(ynh_find_port --port=$(($port_backend+1)))
+ynh_app_setting_set --app=$app --key=port_frontend --value=$port_frontend
 
 #=================================================
 # INSTALL DEPENDENCIES
@@ -97,7 +101,11 @@ ynh_script_progression --message="Setting up source files..." --weight=2
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir=$final_path
+#ynh_setup_source --dest_dir=$final_path
+mkdir -p $final_path/backend
+mkdir -p $final_path/frontend
+git clone --depth 1 https://github.com/hedgedoc/hedgedoc -b develop $final_path/backend
+git clone --depth 1 https://github.com/hedgedoc/react-client $final_path/frontend
 
 #=================================================
 # NGINX CONFIGURATION
@@ -112,11 +120,22 @@ ynh_add_nginx_config
 #==============================================
 # INSTALL HEDGEDOC
 #==============================================
-ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
+ynh_use_nodejs
 
-pushd "$final_path" || ynh_die
-	ynh_use_nodejs
-	bin/setup
+ynh_script_progression --message="Building HedgeDoc backend... (this will take some time and resources!)" --weight=20
+
+pushd "$final_path/backend" || ynh_die
+	ynh_exec_warn_less yarn install
+popd || ynh_die
+
+ynh_script_progression --message="Building HedgeDoc frontend... (this will take some time and resources!)" --weight=20
+
+pushd "$final_path/frontend" || ynh_die
+	ynh_exec_warn_less yarn install
+	# TODO: Fails out of memory in my tests
+	# Production build
+	# Not sure if PORT is necessary here
+	# PORT=$port_frontend REACT_APP_BACKEND_BASE_URL=http://localhost:$port_backend/ yarn build:production
 popd || ynh_die
 
 #=================================================
@@ -124,18 +143,19 @@ popd || ynh_die
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --weight=1
 
-ynh_replace_string --match_string="__ENV_PATH__" --replace_string="$PATH" --target_file="../conf/systemd.service"
+ynh_replace_string --match_string="__ENV_PATH__" --replace_string="$PATH" --target_file="../conf/backend.service"
+ynh_replace_string --match_string="__ENV_PATH__" --replace_string="$PATH" --target_file="../conf/frontend.service"
 
-ynh_add_systemd_config
+ynh_add_systemd_config --service="${app}_backend" --template="../conf/backend.service"
+ynh_add_systemd_config --service="${app}_frontend" --template="../conf/frontend.service"
 
 #=================================================
 # MODIFY A CONFIG FILE
 #=================================================
 ynh_script_progression --message="Modifying a config file..." --weight=1
 
-path=${path_url:1}
-
-ynh_add_config --template="../conf/config.json.example" --destination="$final_path/config.json"
+#path=${path_url:1}
+ynh_add_config --template="../conf/env_backend" --destination="$final_path/backend/.env"
 
 #=================================================
 # GENERIC FINALIZATION
@@ -147,14 +167,14 @@ ynh_script_progression --message="Securing files and directories..." --weight=1
 # Set permissions to app files
 chown -R $app:$app $final_path
 chmod o-rwx $final_path
-chmod 600 $final_path/config.json
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=2
 
-yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
+yunohost service add "${app}_backend" --description="Collaborative Markdown editor's backend" --log="/var/log/$app/$app.log"
+yunohost service add "${app}_frontend" --description="Collaborative Markdown editor's frontend" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -162,7 +182,8 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 ynh_script_progression --message="Starting a systemd service..." --weight=2
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action=start --log_path=systemd --line_match="HTTP Server listening"
+ynh_systemd_action --service_name="${app}_backend" --action=start --log_path=systemd
+ynh_systemd_action --service_name="${app}_frontend" --action=start --log_path=systemd
 
 #=================================================
 # SETUP SSOWAT

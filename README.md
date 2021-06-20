@@ -17,7 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Collaborative editor to work on notes written in Markdown
 
-**Shipped version:** 1.8.2~ynh2
+**Shipped version:** 2.0.0~ynh1
 
 **Demo:** https://demo.hedgedoc.org/
 
