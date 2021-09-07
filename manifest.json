@@ -13,7 +13,6 @@
         "website": "https://hedgedoc.org",
         "demo": "https://demo.hedgedoc.org/",
         "admindoc": "https://docs.hedgedoc.org/",
-        "userdoc": "https://yunohost.org/en/app_hedgedoc",
         "code": "https://github.com/hedgedoc/hedgedoc"
     },
     "license": "AGPL-3.0-only",
