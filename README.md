@@ -35,7 +35,6 @@ When you finished editing the configuration, for your changes to take effect, yo
 ## Documentation and resources
 
 * Official app website: https://hedgedoc.org
-* Official user documentation: https://yunohost.org/en/app_hedgedoc
 * Official admin documentation: https://docs.hedgedoc.org/
 * Upstream app code repository: https://github.com/hedgedoc/hedgedoc
 * YunoHost documentation for this app: https://yunohost.org/app_hedgedoc
