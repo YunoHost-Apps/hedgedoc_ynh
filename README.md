@@ -17,7 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Collaborative editor to work on notes written in Markdown
 
-**Shipped version:** 1.8.2~ynh2
+**Shipped version:** 1.9.0~ynh1
 
 **Demo:** https://demo.hedgedoc.org/
 
@@ -35,7 +35,6 @@ When you finished editing the configuration, for your changes to take effect, yo
 ## Documentation and resources
 
 * Official app website: https://hedgedoc.org
-* Official user documentation: https://yunohost.org/en/app_hedgedoc
 * Official admin documentation: https://docs.hedgedoc.org/
 * Upstream app code repository: https://github.com/hedgedoc/hedgedoc
 * YunoHost documentation for this app: https://yunohost.org/app_hedgedoc

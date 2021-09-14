@@ -13,7 +13,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 Éditeur collaboratif pour travailler sur des notes en Markdown
 
-**Version incluse :** 1.8.2~ynh2
+**Version incluse :** 1.9.0~ynh1
 
 **Démo :** https://demo.hedgedoc.org/
 
@@ -31,7 +31,6 @@ Lorsque vous avez terminé de modifier la configuration, pour que vos modificati
 ## Documentations et ressources
 
 * Site officiel de l'app : https://hedgedoc.org
-* Documentation officielle utilisateur : https://yunohost.org/en/app_hedgedoc
 * Documentation officielle de l'admin : https://docs.hedgedoc.org/
 * Dépôt de code officiel de l'app : https://github.com/hedgedoc/hedgedoc
 * Documentation YunoHost pour cette app : https://yunohost.org/app_hedgedoc
