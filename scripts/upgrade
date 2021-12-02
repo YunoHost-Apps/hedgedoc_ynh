@@ -27,7 +27,6 @@ db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 #=================================================
 # CHECK VERSION
 #=================================================
-ynh_script_progression --message="Checking version..." --weight=2
 
 upgrade_type=$(ynh_check_app_version_changed)
 
@@ -116,10 +115,10 @@ if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
 
-	pushd "$final_path" || ynh_die
+	pushd "$final_path"
 		ynh_use_nodejs
 		bin/setup
-	popd || ynh_die
+	popd
 fi
 
 #=================================================
