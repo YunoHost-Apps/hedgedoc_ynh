@@ -134,7 +134,7 @@ ynh_add_systemd_config
 #=================================================
 ynh_script_progression --message="Modifying a config file..." --weight=1
 
-path=${path_url%/}
+path=${path_url#/}
 ynh_add_config --template="../conf/config.json.example" --destination="$final_path/config.json"
 
 chmod 400 "$final_path/config.json"
