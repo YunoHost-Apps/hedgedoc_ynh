@@ -30,7 +30,7 @@
             "addGoogleAnalytics": false
         },
         "db": {
-            "username": "__DB_NAME__",
+            "username": "__DB_USER__",
             "password": "__DB_PWD__",
             "database": "__DB_NAME__",
             "host": "localhost",
