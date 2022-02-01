@@ -73,7 +73,7 @@ fi
 #=================================================
 ynh_script_progression --message="Stopping a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action=stop --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --service_name=$app --action=stop --log_path=systemd
 
 #=================================================
 # MODIFY URL IN NGINX CONF
@@ -113,9 +113,12 @@ fi
 ynh_backup_if_checksum_is_different --file="$final_path/config.json"
 
 domain=$new_domain
-path=${new_path:1}
+url_path=${new_path#/}
 
 ynh_add_config --template="../conf/config.json.example" --destination="$final_path/config.json"
+
+chmod 400 "$final_path/config.json"
+chown $app:$app "$final_path/config.json"
 
 #=================================================
 # GENERIC FINALISATION
@@ -138,4 +141,4 @@ ynh_systemd_action --service_name=nginx --action=reload
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Change of URL completed for HedgeDoc" --last
+ynh_script_progression --message="Change of URL completed for $app" --last
