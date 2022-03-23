@@ -27,6 +27,7 @@
             "upgradeInsecureRequests": "auto",
             "addDefaults": true,
             "addDisqus": true,
+            "allowFraming": false,
             "addGoogleAnalytics": false
         },
         "db": {
