@@ -30,6 +30,13 @@
             "allowFraming": false,
             "addGoogleAnalytics": false
         },
+        "minio": {
+            "accessKey": "",
+            "secretKey": "",
+            "endPoint": "localhost",
+            "port": 9000,
+            "secure": false
+        },
         "db": {
             "username": "__DB_USER__",
             "password": "__DB_PWD__",
