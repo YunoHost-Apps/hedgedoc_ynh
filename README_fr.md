@@ -13,7 +13,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 Éditeur collaboratif pour travailler sur des notes en Markdown
 
-**Version incluse :** 1.9.2~ynh1
+**Version incluse :** 1.9.3~ynh1
 
 **Démo :** https://demo.hedgedoc.org/
 
