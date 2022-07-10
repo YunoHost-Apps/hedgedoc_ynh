@@ -85,6 +85,10 @@ then
 	ynh_setup_source --dest_dir=$final_path --keep="$final_path/config.json"
 fi
 
+chmod 750 "$final_path"
+chmod -R o-rwx "$final_path"
+chown -R $app:www-data "$final_path"
+
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
@@ -108,9 +112,10 @@ ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ st
 
 #=================================================
 # SPECIFIC UPGRADE
-#==============================================
+#=================================================
 # INSTALL HEDGEDOC
-#==============================================
+#=================================================
+
 if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
@@ -126,21 +131,8 @@ fi
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --weight=2
 
-env_path="$PATH"
 # Create a dedicated systemd config
 ynh_add_systemd_config
-
-#=================================================
-# GENERIC FINALIZATION
-#=================================================
-# SECURE FILES AND DIRECTORIES
-#=================================================
-ynh_script_progression --message="Securing files and directories..." --weight=1
-
-# Set permissions on app files
-chown -R $app:$app $final_path
-chmod o-rwx $final_path
-chmod 600 $final_path/config.json
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
