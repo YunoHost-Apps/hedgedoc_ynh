@@ -28,8 +28,7 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 - Easy to use permission system
 - Low system requirements
 
-**Shipped version:** 1.9.4~ynh1
-
+**Shipped version:** 1.9.4~ynh2
 
 **Demo:** https://demo.hedgedoc.org/
 
