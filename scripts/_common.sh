@@ -5,7 +5,7 @@
 #=================================================
 
 # dependencies used by the app
-pkg_dependencies="postgresql apt-transport-https"
+pkg_dependencies="postgresql"
 
 nodejs_version=16
 
