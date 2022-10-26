@@ -8,10 +8,11 @@
         "useCDN": false,
         "allowGravatar": false,
         "allowFreeURL": false,
+        "allowAnonymous": __ALLOW_ANONYMOUS__, 
         "allowAnonymousEdits": true,
         "defaultPermission": "locked",
         "email": true,
-        "allowEmailRegister": true,
+        "allowEmailRegister": __ALLOW_EMAIL_REGISTRATION__,
         "imageUploadType": "filesystem",
         "tooBusyLag": 1000,
         "hsts": {
@@ -54,6 +55,6 @@
             "usernameField": "cn",
             "useridField": "uid",
             "providerName": "YunoHost"
-        }
+        },
     }
 }
