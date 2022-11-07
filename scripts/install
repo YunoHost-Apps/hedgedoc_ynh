@@ -29,6 +29,9 @@ is_public=$YNH_APP_ARG_IS_PUBLIC
 
 app=$YNH_APP_INSTANCE_NAME
 
+allow_anonymous=false
+allow_email_registration=false
+
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
 #=================================================
@@ -47,6 +50,8 @@ ynh_script_progression --message="Storing installation settings..." --weight=2
 
 ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
+ynh_app_setting_set --app=$app --key=allow_anonymous --value=$allow_anonymous
+ynh_app_setting_set --app=$app --key=allow_email_registration --value=$allow_email_registration
 
 #=================================================
 # STANDARD MODIFICATIONS
