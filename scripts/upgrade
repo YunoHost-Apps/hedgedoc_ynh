@@ -24,6 +24,9 @@ db_name=$(ynh_app_setting_get --app=$app --key=db_name)
 db_user=$db_name
 db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 
+allow_anonymous=$(ynh_app_setting_get --app=$app --key=allow_anonymous)
+allow_email_registration=$(ynh_app_setting_get --app=$app --key=allow_email_registration)
+
 #=================================================
 # CHECK VERSION
 #=================================================
@@ -34,6 +37,16 @@ upgrade_type=$(ynh_check_app_version_changed)
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
 ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+
+if [ -z "$allow_anonymous" ]; then
+	allow_anonymous="false"
+	ynh_app_setting_set --app=$app --key=allow_anonymous --value=$allow_anonymous
+fi
+
+if [ -z "$allow_email_registration" ]; then
+	allow_email_registration="false"
+	ynh_app_setting_set --app=$app --key=allow_email_registration --value=$allow_email_registration
+fi
 
 # Cleaning legacy permissions
 if ynh_legacy_permissions_exists; then
