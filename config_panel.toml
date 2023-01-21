@@ -23,12 +23,20 @@ name = "HedgeDoc configuration"
         bind = "allow_email_registration:__FINALPATH__/config.json"
 
         [main.config.allow_free_url]
-        ask = "Allow email registration"
+        ask = "Allow new note creation"
         type = "boolean"
         yes = "true"
         no = "false"
         help = "Set to allow new note creation by accessing a nonexistent note URL. This is the behavior familiar from Etherpad."
         bind = "allow_free_url:__FINALPATH__/config.json"
+
+        [main.config.require_free_url_authentication]
+        ask = "Require FreeURL authentication"
+        type = "boolean"
+        yes = "true"
+        no = "false"
+        help = "Set to require authentication for FreeURL mode style note creation."
+        bind = "require_free_url_authentication:__FINALPATH__/config.json"
 
 
 
