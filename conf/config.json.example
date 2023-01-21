@@ -8,6 +8,7 @@
         "useCDN": false,
         "allowGravatar": false,
         "allowFreeURL": __ALLOW_FREE_URL__,
+        "requireFreeURLAuthentication": __REQUIRE_FREE_URL_AUTHENTICATION__,
         "allowAnonymous": __ALLOW_ANONYMOUS__, 
         "allowAnonymousEdits": true,
         "defaultPermission": "locked",
