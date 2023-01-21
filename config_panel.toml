@@ -14,6 +14,15 @@ name = "HedgeDoc configuration"
         help = "Set to allow anonymous usage (default is true)."
         bind = "allow_anonymous:__FINALPATH__/config.json"
 
+        [main.config.allow_anonymous_edits]
+        ask = "Allow anonymous edits"
+        type = "boolean"
+        yes = "true"
+        no = "false"
+        help = "Allow users to select freely permission, allowing guests to edit existing notes."
+        bind = "allow_anonymous_edits:__FINALPATH__/config.json"
+
+
         [main.config.allow_email_registration]
         ask = "Allow email registration"
         type = "boolean"

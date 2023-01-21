@@ -10,7 +10,7 @@
         "allowFreeURL": __ALLOW_FREE_URL__,
         "requireFreeURLAuthentication": __REQUIRE_FREE_URL_AUTHENTICATION__,
         "allowAnonymous": __ALLOW_ANONYMOUS__, 
-        "allowAnonymousEdits": true,
+        "allowAnonymousEdits": __ALLOW_ANONYMOUS_EDITS__,
         "defaultPermission": "locked",
         "email": true,
         "allowEmailRegister": __ALLOW_EMAIL_REGISTRATION__,
