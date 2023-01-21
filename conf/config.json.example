@@ -7,7 +7,7 @@
         "loglevel": "info",
         "useCDN": false,
         "allowGravatar": false,
-        "allowFreeURL": false,
+        "allowFreeURL": __ALLOW_FREE_URL__,
         "allowAnonymous": __ALLOW_ANONYMOUS__, 
         "allowAnonymousEdits": true,
         "defaultPermission": "locked",
