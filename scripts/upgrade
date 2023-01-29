@@ -152,6 +152,7 @@ then
 	ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
 
 	pushd "$final_path"
+		ynh_secure_remove /usr/local/share/.cache/yarn 
 		ynh_use_nodejs
 		bin/setup
 	popd
