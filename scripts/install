@@ -30,7 +30,10 @@ is_public=$YNH_APP_ARG_IS_PUBLIC
 app=$YNH_APP_INSTANCE_NAME
 
 allow_anonymous=false
+allow_anonymous_edits=false
 allow_email_registration=false
+allow_free_url=false
+require_free_url_authentication=false
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
@@ -52,6 +55,9 @@ ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
 ynh_app_setting_set --app=$app --key=allow_anonymous --value=$allow_anonymous
 ynh_app_setting_set --app=$app --key=allow_email_registration --value=$allow_email_registration
+ynh_app_setting_set --app=$app --key=allow_free_url --value=$allow_free_url
+ynh_app_setting_set --app=$app --key=require_free_url_authentication --value=$require_free_url_authentication
+ynh_app_setting_set --app=$app --key=allow_anonymous_edits --value=$allow_anonymous_edits
 
 #=================================================
 # STANDARD MODIFICATIONS

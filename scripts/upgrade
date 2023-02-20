@@ -25,7 +25,10 @@ db_user=$db_name
 db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 
 allow_anonymous=$(ynh_app_setting_get --app=$app --key=allow_anonymous)
+allow_anonymous_edits=$(ynh_app_setting_get --app=$app --key=allow_anonymous_edits)
 allow_email_registration=$(ynh_app_setting_get --app=$app --key=allow_email_registration)
+allow_free_url=$(ynh_app_setting_get --app=$app --key=allow_free_url)
+require_free_url_authentication=$(ynh_app_setting_get --app=$app --key=require_free_url_authentication)
 
 #=================================================
 # CHECK VERSION
@@ -43,9 +46,24 @@ if [ -z "$allow_anonymous" ]; then
 	ynh_app_setting_set --app=$app --key=allow_anonymous --value=$allow_anonymous
 fi
 
+if [ -z "$allow_anonymous_edits" ]; then
+	allow_anonymous_edits="false"
+	ynh_app_setting_set --app=$app --key=allow_anonymous_edits --value=$allow_anonymous_edits
+fi
+
 if [ -z "$allow_email_registration" ]; then
 	allow_email_registration="false"
 	ynh_app_setting_set --app=$app --key=allow_email_registration --value=$allow_email_registration
+fi
+
+if [ -z "$allow_free_url" ]; then
+	allow_free_url="false"
+	ynh_app_setting_set --app=$app --key=allow_free_url --value=$allow_free_url
+fi
+
+if [ -z "$require_free_url_authentication" ]; then
+	require_free_url_authentication="false"
+	ynh_app_setting_set --app=$app --key=require_free_url_authentication --value=$require_free_url_authentication
 fi
 
 # Cleaning legacy permissions
@@ -134,6 +152,7 @@ then
 	ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
 
 	pushd "$final_path"
+		ynh_secure_remove /usr/local/share/.cache/yarn 
 		ynh_use_nodejs
 		bin/setup
 	popd

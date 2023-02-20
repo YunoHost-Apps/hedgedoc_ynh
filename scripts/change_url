@@ -34,7 +34,10 @@ db_user=$db_name
 db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 
 allow_anonymous=$(ynh_app_setting_get --app=$app --key=allow_anonymous)
+allow_anonymous_edits=$(ynh_app_setting_get --app=$app --key=allow_anonymous_edits)
 allow_email_registration=$(ynh_app_setting_get --app=$app --key=allow_email_registration)
+allow_free_url=$(ynh_app_setting_get --app=$app --key=allow_free_url)
+require_free_url_authentication=$(ynh_app_setting_get --app=$app --key=require_free_url_authentication)
 
 #=================================================
 # BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
