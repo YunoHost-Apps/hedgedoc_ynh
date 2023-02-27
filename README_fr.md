@@ -6,6 +6,7 @@ It shall NOT be edited by hand.
 # HedgeDoc pour YunoHost
 
 [![Niveau d’intégration](https://dash.yunohost.org/integration/hedgedoc.svg)](https://dash.yunohost.org/appci/app/hedgedoc) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
+
 [![Installer HedgeDoc avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=hedgedoc)
 
 *[Read this readme in english.](./README.md)*
@@ -28,7 +29,7 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 - Easy to use permission system
 - Low system requirements
 
-**Version incluse :** 1.9.6~ynh2
+**Version incluse :** 1.9.7~ynh1
 
 **Démo :** https://demo.hedgedoc.org/
 
