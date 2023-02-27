@@ -41,6 +41,7 @@ ram.runtime = "50M"
     default = "visitors"
 
 [resources]
+
     [resources.ports]
 
     [resources.system_user]
@@ -49,10 +50,6 @@ ram.runtime = "50M"
 
     [resources.permissions]
     main.url = "/"
-        [[resources.apt.extras]]
-        repo = "deb https://dl.yarnpkg.com/debian/ stable main"
-        key = "https://dl.yarnpkg.com/debian/pubkey.gpg"
-        packages = "yarn"
 
     [resources.apt]
     packages = "postgresql"
