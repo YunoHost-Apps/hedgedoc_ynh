@@ -78,21 +78,23 @@ ynh_script_progression --message="Upgrading NGINX web server configuration..." -
 # Create a dedicated nginx config
 ynh_add_nginx_config
 
-#=================================================
-# UPGRADE DEPENDENCIES
-#=================================================
-ynh_script_progression --message="Upgrading dependencies..." --weight=10
-
 # Install Nodejs
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
-#=================================================
-# SETUP SYSTEMD
-#=================================================
-ynh_script_progression --message="Configuring a systemd service..." --weight=2
-
 # Create a dedicated systemd config
 ynh_add_systemd_config
+
+#==============================================
+# INSTALL HEDGEDOC
+#==============================================
+ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
+
+pushd "$install_dir"
+	ynh_use_nodejs
+	#ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --frozen-lockfile
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build
+popd
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
