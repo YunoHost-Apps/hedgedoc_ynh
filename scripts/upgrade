@@ -10,27 +10,6 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# LOAD SETTINGS
-#=================================================
-#REMOVEME? ynh_script_progression --message="Loading installation settings..." --weight=2
-
-#REMOVEME? app=$YNH_APP_INSTANCE_NAME
-
-#REMOVEME? domain=$(ynh_app_setting_get --app=$app --key=domain)
-#REMOVEME? path=$(ynh_app_setting_get --app=$app --key=path)
-#REMOVEME? #REMOVEME? install_dir=$(ynh_app_setting_get --app=$app --key=install_dir)
-#REMOVEME? port=$(ynh_app_setting_get --app=$app --key=port)
-#REMOVEME? db_name=$(ynh_app_setting_get --app=$app --key=db_name)
-#REMOVEME? db_user=$db_name
-#REMOVEME? db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
-
-#REMOVEME? allow_anonymous=$(ynh_app_setting_get --app=$app --key=allow_anonymous)
-#REMOVEME? allow_anonymous_edits=$(ynh_app_setting_get --app=$app --key=allow_anonymous_edits)
-#REMOVEME? allow_email_registration=$(ynh_app_setting_get --app=$app --key=allow_email_registration)
-#REMOVEME? allow_free_url=$(ynh_app_setting_get --app=$app --key=allow_free_url)
-#REMOVEME? require_free_url_authentication=$(ynh_app_setting_get --app=$app --key=require_free_url_authentication)
-
-#=================================================
 # CHECK VERSION
 #=================================================
 
@@ -66,27 +45,6 @@ if [ -z "$require_free_url_authentication" ]; then
 	ynh_app_setting_set --app=$app --key=require_free_url_authentication --value=$require_free_url_authentication
 fi
 
-# Cleaning legacy permissions
-#REMOVEME? if ynh_legacy_permissions_exists; then
-#REMOVEME? 	ynh_legacy_permissions_delete_all
-
-	ynh_app_setting_delete --app=$app --key=is_public
-fi
-
-#=================================================
-# BACKUP BEFORE UPGRADE THEN ACTIVE TRAP
-#=================================================
-ynh_script_progression --message="Backing up HedgeDoc before upgrading (may take a while)..." --weight=10
-
-# Backup the current version of the app
-#REMOVEME? ynh_backup_before_upgrade
-#REMOVEME? ynh_clean_setup () {
-	# restore it if the upgrade fails
-#REMOVEME? 	ynh_restore_upgradebackup
-}
-# Exit if an error occurs during the execution of the script
-#REMOVEME? ynh_abort_if_errors
-
 #=================================================
 # STANDARD UPGRADE STEPS
 #=================================================
@@ -95,14 +53,6 @@ ynh_script_progression --message="Backing up HedgeDoc before upgrading (may take
 ynh_script_progression --message="Stopping a systemd service..." --weight=1
 
 ynh_systemd_action --service_name=$app --action=stop --log_path=systemd
-
-#=================================================
-# CREATE DEDICATED USER
-#=================================================
-#REMOVEME? ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
-
-# Create a dedicated user (if not existing)
-#REMOVEME? ynh_system_user_create --username=$app --home_dir=$install_dir
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -131,32 +81,10 @@ ynh_add_nginx_config
 #=================================================
 # UPGRADE DEPENDENCIES
 #=================================================
-#REMOVEME? ynh_script_progression --message="Upgrading dependencies..." --weight=10
-
-#REMOVEME? ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
+ynh_script_progression --message="Upgrading dependencies..." --weight=10
 
 # Install Nodejs
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
-
-# Install Yarn
-#REMOVEME? ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
-
-#=================================================
-# SPECIFIC UPGRADE
-#=================================================
-# INSTALL HEDGEDOC
-#=================================================
-
-if [ "$upgrade_type" == "UPGRADE_APP" ]
-then
-	ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
-
-	pushd "$install_dir"
-		ynh_secure_remove /usr/local/share/.cache/yarn 
-		ynh_use_nodejs
-		bin/setup
-	popd
-fi
 
 #=================================================
 # SETUP SYSTEMD
@@ -179,13 +107,6 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
 ynh_systemd_action --service_name=$app --action=start --log_path=systemd --line_match="HTTP Server listening"
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-#REMOVEME? ynh_script_progression --message="Reloading NGINX web server..." --weight=1
-
-#REMOVEME? ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT
