@@ -50,20 +50,17 @@ chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 
 #=================================================
-# NGINX CONFIGURATION
+# SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --weight=2
+ynh_script_progression --message="Adding system configurations related to $app ..." --weight=1
 
 # Create a dedicated NGINX config
 ynh_add_nginx_config
 
-#=================================================
-# SETUP SYSTEMD
-#=================================================
-ynh_script_progression --message="Configuring a systemd service..." --weight=1
-
 # Create a dedicated systemd config
 ynh_add_systemd_config
+
+yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
 
 #=================================================
 # MODIFY A CONFIG FILE
@@ -75,13 +72,6 @@ ynh_add_config --template="../conf/config.json.example" --destination="$install_
 
 chmod 600 "$install_dir/config.json"
 chown $app:$app "$install_dir/config.json"
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=2
-
-yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
