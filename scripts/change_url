@@ -42,15 +42,15 @@ ynh_change_url_nginx_config
 # CONFIGURE HEDGEDOC
 #=================================================
 
-ynh_backup_if_checksum_is_different --file="$final_path/config.json"
+ynh_backup_if_checksum_is_different --file="$install_dir/config.json"
 
 domain=$new_domain
 url_path=${new_path#/}
 
-ynh_add_config --template="../conf/config.json.example" --destination="$final_path/config.json"
+ynh_add_config --template="../conf/config.json.example" --destination="$install_dir/config.json"
 
-chmod 400 "$final_path/config.json"
-chown $app:$app "$final_path/config.json"
+chmod 400 "$install_dir/config.json"
+chown $app:$app "$install_dir/config.json"
 
 #=================================================
 # GENERIC FINALISATION
