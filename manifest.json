@@ -6,7 +6,7 @@
         "en": "Collaborative editor to work on notes written in Markdown",
         "fr": "Éditeur collaboratif pour travailler sur des notes en Markdown"
     },
-    "version": "1.9.7~ynh1",
+    "version": "1.9.7~ynh2",
     "url": "https://hedgedoc.org",
     "upstream": {
         "license": "AGPL-3.0-only",
@@ -20,7 +20,7 @@
         "name": "eric_G"
     },
     "requirements": {
-        "yunohost": ">= 11.0.9"
+        "yunohost": ">= 11.1.11"
     },
     "multi_instance": true,
     "services": [
