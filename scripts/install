@@ -135,7 +135,6 @@ pushd "$final_path"
 	#ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --frozen-lockfile
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build
-	#bin/setup
 popd
 
 #=================================================
