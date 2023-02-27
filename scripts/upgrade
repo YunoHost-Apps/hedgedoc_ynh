@@ -12,23 +12,23 @@ source /usr/share/yunohost/helpers
 #=================================================
 # LOAD SETTINGS
 #=================================================
-ynh_script_progression --message="Loading installation settings..." --weight=2
+#REMOVEME? ynh_script_progression --message="Loading installation settings..." --weight=2
 
-app=$YNH_APP_INSTANCE_NAME
+#REMOVEME? app=$YNH_APP_INSTANCE_NAME
 
-domain=$(ynh_app_setting_get --app=$app --key=domain)
-path_url=$(ynh_app_setting_get --app=$app --key=path)
-final_path=$(ynh_app_setting_get --app=$app --key=final_path)
-port=$(ynh_app_setting_get --app=$app --key=port)
-db_name=$(ynh_app_setting_get --app=$app --key=db_name)
-db_user=$db_name
-db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
+#REMOVEME? domain=$(ynh_app_setting_get --app=$app --key=domain)
+#REMOVEME? path=$(ynh_app_setting_get --app=$app --key=path)
+#REMOVEME? #REMOVEME? install_dir=$(ynh_app_setting_get --app=$app --key=install_dir)
+#REMOVEME? port=$(ynh_app_setting_get --app=$app --key=port)
+#REMOVEME? db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+#REMOVEME? db_user=$db_name
+#REMOVEME? db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 
-allow_anonymous=$(ynh_app_setting_get --app=$app --key=allow_anonymous)
-allow_anonymous_edits=$(ynh_app_setting_get --app=$app --key=allow_anonymous_edits)
-allow_email_registration=$(ynh_app_setting_get --app=$app --key=allow_email_registration)
-allow_free_url=$(ynh_app_setting_get --app=$app --key=allow_free_url)
-require_free_url_authentication=$(ynh_app_setting_get --app=$app --key=require_free_url_authentication)
+#REMOVEME? allow_anonymous=$(ynh_app_setting_get --app=$app --key=allow_anonymous)
+#REMOVEME? allow_anonymous_edits=$(ynh_app_setting_get --app=$app --key=allow_anonymous_edits)
+#REMOVEME? allow_email_registration=$(ynh_app_setting_get --app=$app --key=allow_email_registration)
+#REMOVEME? allow_free_url=$(ynh_app_setting_get --app=$app --key=allow_free_url)
+#REMOVEME? require_free_url_authentication=$(ynh_app_setting_get --app=$app --key=require_free_url_authentication)
 
 #=================================================
 # CHECK VERSION
@@ -67,8 +67,8 @@ if [ -z "$require_free_url_authentication" ]; then
 fi
 
 # Cleaning legacy permissions
-if ynh_legacy_permissions_exists; then
-	ynh_legacy_permissions_delete_all
+#REMOVEME? if ynh_legacy_permissions_exists; then
+#REMOVEME? 	ynh_legacy_permissions_delete_all
 
 	ynh_app_setting_delete --app=$app --key=is_public
 fi
@@ -79,13 +79,13 @@ fi
 ynh_script_progression --message="Backing up HedgeDoc before upgrading (may take a while)..." --weight=10
 
 # Backup the current version of the app
-ynh_backup_before_upgrade
-ynh_clean_setup () {
+#REMOVEME? ynh_backup_before_upgrade
+#REMOVEME? ynh_clean_setup () {
 	# restore it if the upgrade fails
-	ynh_restore_upgradebackup
+#REMOVEME? 	ynh_restore_upgradebackup
 }
 # Exit if an error occurs during the execution of the script
-ynh_abort_if_errors
+#REMOVEME? ynh_abort_if_errors
 
 #=================================================
 # STANDARD UPGRADE STEPS
@@ -99,10 +99,10 @@ ynh_systemd_action --service_name=$app --action=stop --log_path=systemd
 #=================================================
 # CREATE DEDICATED USER
 #=================================================
-ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
+#REMOVEME? ynh_script_progression --message="Making sure dedicated system user exists..." --weight=1
 
 # Create a dedicated user (if not existing)
-ynh_system_user_create --username=$app --home_dir=$final_path
+#REMOVEME? ynh_system_user_create --username=$app --home_dir=$install_dir
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -113,12 +113,12 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=10
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir=$final_path --keep="config.json"
+	ynh_setup_source --dest_dir=$install_dir --keep="config.json"
 fi
 
-chmod 750 "$final_path"
-chmod -R o-rwx "$final_path"
-chown -R $app:www-data "$final_path"
+chmod 750 "$install_dir"
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -131,15 +131,15 @@ ynh_add_nginx_config
 #=================================================
 # UPGRADE DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Upgrading dependencies..." --weight=10
+#REMOVEME? ynh_script_progression --message="Upgrading dependencies..." --weight=10
 
-ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
+#REMOVEME? ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
 
 # Install Nodejs
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
 # Install Yarn
-ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
+#REMOVEME? ynh_install_extra_app_dependencies --repo="deb https://dl.yarnpkg.com/debian/ stable main" --package="yarn" --key="https://dl.yarnpkg.com/debian/pubkey.gpg"
 
 #=================================================
 # SPECIFIC UPGRADE
@@ -151,7 +151,7 @@ if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
 	ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
 
-	pushd "$final_path"
+	pushd "$install_dir"
 		ynh_secure_remove /usr/local/share/.cache/yarn 
 		ynh_use_nodejs
 		bin/setup
@@ -183,9 +183,9 @@ ynh_systemd_action --service_name=$app --action=start --log_path=systemd --line_
 #=================================================
 # RELOAD NGINX
 #=================================================
-ynh_script_progression --message="Reloading NGINX web server..." --weight=1
+#REMOVEME? ynh_script_progression --message="Reloading NGINX web server..." --weight=1
 
-ynh_systemd_action --service_name=nginx --action=reload
+#REMOVEME? ynh_systemd_action --service_name=nginx --action=reload
 
 #=================================================
 # END OF SCRIPT
