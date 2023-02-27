@@ -132,8 +132,9 @@ ynh_script_progression --message="Building HedgeDoc... (this will take some time
 
 pushd "$final_path"
 	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
-	bin/setup
+	#ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --frozen-lockfile
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build
 popd
 
 #=================================================
