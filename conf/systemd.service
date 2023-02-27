@@ -8,6 +8,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__
+Environment="PUPPETEER_SKIP_DOWNLOAD"
 Environment="__YNH_NODE_LOAD_PATH__"
 Environment="NODE_ENV=production"
 ExecStart=__YNH_NPM__ start --production
