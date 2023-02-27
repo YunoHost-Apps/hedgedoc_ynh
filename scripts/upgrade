@@ -89,12 +89,17 @@ ynh_add_systemd_config
 #==============================================
 ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
 
+if [ "$upgrade_type" == "UPGRADE_APP" ]
+then
+	ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
+
 pushd "$install_dir"
-	ynh_use_nodejs
-	#ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --frozen-lockfile
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build
-popd
+		ynh_secure_remove /usr/local/share/.cache/yarn 
+		ynh_use_nodejs
+		ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --frozen-lockfile
+		ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build
+	popd
+fi
 
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
