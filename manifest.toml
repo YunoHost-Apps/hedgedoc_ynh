@@ -1,0 +1,69 @@
+packaging_format = 2
+
+id = "hedgedoc"
+name = "HedgeDoc"
+description.en = "Collaborative editor to work on notes written in Markdown"
+description.fr = "Éditeur collaboratif pour travailler sur des notes en Markdown"
+
+version = "1.9.7~ynh3"
+
+maintainers = ["eric_G"]
+
+[upstream]
+license = "AGPL-3.0-only"
+website = "https://hedgedoc.org"
+demo = "https://demo.hedgedoc.org/"
+admindoc = "https://docs.hedgedoc.org/"
+code = "https://github.com/hedgedoc/hedgedoc"
+
+[integration]
+yunohost = ">= 11.1.16"
+architectures = "all"
+multi_instance = true
+ldap = true
+sso = true
+disk = "50M"
+ram.build = "2500M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/hedgedoc"
+
+    [install.init_main_permission]
+    help.en = "If enabled, HedgeDoc will be accessible by people who do not have an account. This can be changed later via the webadmin."
+    help.fr = "Si cette case est cochée, HedgeDoc sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
+    type = "group"
+    default = "visitors"
+
+[resources]
+
+    [resources.sources]
+
+        [resources.sources.main]
+        url = "https://github.com/hedgedoc/hedgedoc/releases/download/1.9.7/hedgedoc-1.9.7.tar.gz"
+        sha256 = "c9bd99c65cf45fa1d7808855b46abbfa13b24400254d8da5e81dae2965494bb3"
+        autoupdate.strategy = "latest_github_tag"
+
+    [resources.ports]
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.apt]
+    packages = "postgresql"
+
+    extras.yarn.repo = "deb https://dl.yarnpkg.com/debian/ stable main"
+    extras.yarn.key = "https://dl.yarnpkg.com/debian/pubkey.gpg"
+    extras.yarn.packages = "yarn"
+
+    [resources.database]
+    type = "postgresql"
