@@ -29,20 +29,13 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 - Easy to use permission system
 - Low system requirements
 
-**Shipped version:** 1.9.7~ynh2
+**Shipped version:** 1.9.7~ynh3
 
 **Demo:** https://demo.hedgedoc.org/
 
 ## Screenshots
 
 ![Screenshot of HedgeDoc](./doc/screenshots/screenshot.png)
-
-## Disclaimers / important information
-
-## Configuration
-
-You can configure HedgeDoc by editing this file `/var/www/hedgedoc/config.json` using the [documentation](https://github.com/hedgedoc/hedgedoc/blob/master/docs/configuration.md)  
-When you finished editing the configuration, for your changes to take effect, you will have to run: `sudo systemctl restart hedgedoc`.
 
 ## Documentation and resources
 
