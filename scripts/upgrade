@@ -66,7 +66,6 @@ then
 	ynh_setup_source --dest_dir=$install_dir --keep="config.json"
 fi
 
-chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 
@@ -87,7 +86,6 @@ ynh_add_systemd_config
 #==============================================
 # INSTALL HEDGEDOC
 #==============================================
-ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
 
 if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
