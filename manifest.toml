@@ -5,7 +5,7 @@ name = "HedgeDoc"
 description.en = "Collaborative editor to work on notes written in Markdown"
 description.fr = "Éditeur collaboratif pour travailler sur des notes en Markdown"
 
-version = "1.9.7~ynh3"
+version = "1.9.8~ynh1"
 
 maintainers = ["eric_G"]
 
@@ -45,8 +45,8 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/hedgedoc/hedgedoc/releases/download/1.9.7/hedgedoc-1.9.7.tar.gz"
-        sha256 = "c9bd99c65cf45fa1d7808855b46abbfa13b24400254d8da5e81dae2965494bb3"
+        url = "https://github.com/hedgedoc/hedgedoc/releases/download/1.9.8/hedgedoc-1.9.8.tar.gz"
+        sha256 = "dca402c47804b7b2ac0a2bcf715b8e570a9e617c87c150f5ff2a2b35b764c349"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.ports]
