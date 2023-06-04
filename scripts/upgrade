@@ -70,18 +70,17 @@ chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 
 #=================================================
-# NGINX CONFIGURATION
+# REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression --message="Upgrading NGINX web server configuration..." --weight=2
+ynh_script_progression --message="Upgrading system configurations related to $app..." --weight=1
 
-# Create a dedicated nginx config
 ynh_add_nginx_config
 
-# Install Nodejs
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
 
-# Create a dedicated systemd config
 ynh_add_systemd_config
+
+yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
 
 #==============================================
 # INSTALL HEDGEDOC
@@ -89,22 +88,15 @@ ynh_add_systemd_config
 
 if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
-	ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=20
+	ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=20
 
-pushd "$install_dir"
+	pushd "$install_dir"
 		ynh_secure_remove /usr/local/share/.cache/yarn 
 		ynh_use_nodejs
 		ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --frozen-lockfile
 		ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build
 	popd
 fi
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=2
-
-yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
