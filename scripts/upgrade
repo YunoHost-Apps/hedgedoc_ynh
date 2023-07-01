@@ -93,8 +93,7 @@ then
 	pushd "$install_dir"
 		ynh_secure_remove /usr/local/share/.cache/yarn 
 		ynh_use_nodejs
-		ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install --frozen-lockfile
-		ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn build
+		ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn workspaces focus --production
 	popd
 fi
 
