@@ -35,8 +35,8 @@ ram.runtime = "50M"
     default = "/hedgedoc"
 
     [install.init_main_permission]
-    help.en = "If enabled, HedgeDoc will be accessible by people who do not have an account. This can be changed later via the webadmin."
-    help.fr = "Si cette case est cochée, HedgeDoc sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
+    help.en = "Set to visitors, HedgeDoc will be accessible by people who do not have an account. This can be changed later via the webadmin."
+    help.fr = "Défini sur visiteurs, HedgeDoc sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
     type = "group"
     default = "visitors"
 
