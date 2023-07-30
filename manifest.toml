@@ -46,7 +46,7 @@ ram.runtime = "50M"
 
         [resources.sources.main]
         url = "https://github.com/hedgedoc/hedgedoc/releases/download/1.9.9/hedgedoc-1.9.9.tar.gz"
-        sha256 = "b9a2a3e9213e4ef22ae2f7c429e5652c6ff50714dd88424ee7e828f48e759bff"
+        sha256 = "1769d30e60458040475a6d74f53952101962c40c390765e19e6ff6f3fe70c008"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.ports]
