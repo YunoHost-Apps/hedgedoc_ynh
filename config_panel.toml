@@ -13,7 +13,7 @@ services = ["__APP__"]
         yes = "true"
         no = "false"
         help = "Set to allow anonymous usage (default is true)."
-        bind = "allow_anonymous:__INSTALL_DIR__/config.json"
+        bind = "allowAnonymous:__INSTALL_DIR__/config.json"
 
         [main.config.allow_anonymous_edits]
         ask = "Allow anonymous edits"
@@ -21,7 +21,7 @@ services = ["__APP__"]
         yes = "true"
         no = "false"
         help = "Allow users to select freely permission, allowing guests to edit existing notes."
-        bind = "allow_anonymous_edits:__INSTALL_DIR__/config.json"
+        bind = "allowAnonymousEdits:__INSTALL_DIR__/config.json"
 
 
         [main.config.allow_email_registration]
@@ -30,7 +30,7 @@ services = ["__APP__"]
         yes = "true"
         no = "false"
         help = "Set to allow registration of new accounts using an email address. If set to false, you can still create accounts using the command line."
-        bind = "allow_email_registration:__INSTALL_DIR__/config.json"
+        bind = "allowEmailRegister:__INSTALL_DIR__/config.json"
 
         [main.config.allow_free_url]
         ask = "Allow new note creation"
@@ -38,7 +38,7 @@ services = ["__APP__"]
         yes = "true"
         no = "false"
         help = "Set to allow new note creation by accessing a nonexistent note URL. This is the behavior familiar from Etherpad."
-        bind = "allow_free_url:__INSTALL_DIR__/config.json"
+        bind = "allowFreeURL:__INSTALL_DIR__/config.json"
 
         [main.config.require_free_url_authentication]
         ask = "Require FreeURL authentication"
@@ -46,7 +46,7 @@ services = ["__APP__"]
         yes = "true"
         no = "false"
         help = "Set to require authentication for FreeURL mode style note creation."
-        bind = "require_free_url_authentication:__INSTALL_DIR__/config.json"
+        bind = "requireFreeURLAuthentication:__INSTALL_DIR__/config.json"
 
 
 

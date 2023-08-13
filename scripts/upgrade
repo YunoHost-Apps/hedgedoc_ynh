@@ -88,7 +88,7 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 
 if [ "$upgrade_type" == "UPGRADE_APP" ]
 then
-	ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=20
+	ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=10
 
 	pushd "$install_dir"
 		ynh_secure_remove /usr/local/share/.cache/yarn 
