@@ -29,6 +29,8 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 - Low system requirements
 
 
+**Shipped version:** 1.9.9~ynh1
+
 **Demo:** https://demo.hedgedoc.org/
 
 ## Screenshots
