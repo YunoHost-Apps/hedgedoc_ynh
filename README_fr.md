@@ -16,18 +16,18 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-HedgeDoc (formerly known as CodiMD) is an open-source, web-based, self-hosted, collaborative markdown editor.
+HedgeDoc (anciennement connu sous le nom de CodiMD) est un éditeur open source, basé sur le Web, auto-hébergé et collaboratif.
+Vous pouvez l'utiliser pour collaborer facilement sur des notes, des graphiques et même des présentations en temps réel. Tout ce que vous avez à faire est de partager votre lien de note avec vos collègues et ils sont prêts à partir.
 
-You can use it to easily collaborate on notes, graphs and even presentations in real-time. All you need to do is to share your note-link to your co-workers and they’re ready to go.
+### Caractéristiques
 
-### Features
+- Collaboration en temps réel
+- Graphiques et diagrammes
+- Révisions
+- Mode présentation
+- Système d'autorisation facile à utiliser
+- Faible configuration système requise
 
-- Real-time collaboration
-- Graphs & diagrams
-- Revisions
-- Presentation mode
-- Easy to use permission system
-- Low system requirements
 
 **Version incluse :** 1.9.9~ynh1
 
