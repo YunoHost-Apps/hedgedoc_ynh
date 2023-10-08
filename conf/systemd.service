@@ -10,7 +10,7 @@ Group=__APP__
 WorkingDirectory=__INSTALL_DIR__
 Environment="__YNH_NODE_LOAD_PATH__"
 Environment="NODE_ENV=production"
-ExecStart=__YNH_NPM__ start --production
+ExecStart=__YNH_NPM__ start --omit=dev
 Restart=always
 
 # Sandboxing options to harden security
