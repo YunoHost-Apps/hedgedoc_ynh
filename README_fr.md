@@ -29,7 +29,7 @@ Vous pouvez l'utiliser pour collaborer facilement sur des notes, des graphiques 
 - Faible configuration système requise
 
 
-**Version incluse :** 1.9.9~ynh1
+**Version incluse :** 1.9.9~ynh2
 
 **Démo :** https://demo.hedgedoc.org/
 
@@ -42,7 +42,6 @@ Vous pouvez l'utiliser pour collaborer facilement sur des notes, des graphiques 
 * Site officiel de l’app : <https://hedgedoc.org>
 * Documentation officielle de l’admin : <https://docs.hedgedoc.org/>
 * Dépôt de code officiel de l’app : <https://github.com/hedgedoc/hedgedoc>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_hedgedoc>
 * Signaler un bug : <https://github.com/YunoHost-Apps/hedgedoc_ynh/issues>
 
 ## Informations pour les développeurs
