@@ -69,6 +69,7 @@ ynh_script_progression --message="Building HedgeDoc... (this will take some time
 pushd "$install_dir"
 	ynh_use_nodejs
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn workspaces focus --production
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
 popd
 
 #=================================================
