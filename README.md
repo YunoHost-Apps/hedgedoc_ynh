@@ -42,6 +42,7 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 * Official app website: <https://hedgedoc.org>
 * Official admin documentation: <https://docs.hedgedoc.org/>
 * Upstream app code repository: <https://github.com/hedgedoc/hedgedoc>
+* YunoHost Store: <https://apps.yunohost.org/app/hedgedoc>
 * Report a bug: <https://github.com/YunoHost-Apps/hedgedoc_ynh/issues>
 
 ## Developer info
