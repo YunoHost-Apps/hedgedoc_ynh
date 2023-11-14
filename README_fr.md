@@ -42,6 +42,7 @@ Vous pouvez l'utiliser pour collaborer facilement sur des notes, des graphiques 
 * Site officiel de l’app : <https://hedgedoc.org>
 * Documentation officielle de l’admin : <https://docs.hedgedoc.org/>
 * Dépôt de code officiel de l’app : <https://github.com/hedgedoc/hedgedoc>
+* YunoHost Store: <https://apps.yunohost.org/app/hedgedoc>
 * Signaler un bug : <https://github.com/YunoHost-Apps/hedgedoc_ynh/issues>
 
 ## Informations pour les développeurs
