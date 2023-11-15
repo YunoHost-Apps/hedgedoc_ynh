@@ -99,6 +99,17 @@ then
 fi
 
 #=================================================
+# MODIFY A CONFIG FILE
+#=================================================
+ynh_script_progression --message="Modifying a config file..." --weight=1
+
+url_path=${path#/}
+ynh_add_config --template="config.json.example" --destination="$install_dir/config.json"
+
+chmod 600 "$install_dir/config.json"
+chown $app:$app "$install_dir/config.json"
+
+#=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
