@@ -7,7 +7,7 @@ description.fr = "Éditeur collaboratif pour travailler sur des notes en Markdow
 
 version = "1.9.9~ynh2"
 
-maintainers = ["eric_G"]
+maintainers = []
 
 [upstream]
 license = "AGPL-3.0-only"
