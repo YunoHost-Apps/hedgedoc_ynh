@@ -63,13 +63,11 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 #==============================================
 # INSTALL HEDGEDOC
 #==============================================
-ynh_script_progression --message="Building HedgeDoc backend... (this will take some time and resources!)" --weight=20
+ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=20
 
 pushd "$install_dir/backend"
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
 popd 
-
-ynh_script_progression --message="Building HedgeDoc frontend... (this will take some time and resources!)" --weight=20
 
 pushd "$install_dir/frontend"
 	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
