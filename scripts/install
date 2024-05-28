@@ -64,7 +64,7 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 #==============================================
 # INSTALL HEDGEDOC
 #==============================================
-ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=10
+ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=10
 
 pushd "$install_dir"
 	ynh_use_nodejs
