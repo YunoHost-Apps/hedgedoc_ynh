@@ -38,14 +38,12 @@ ynh_use_nodejs
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=2
+ynh_script_progression --message="Setting up source files..." --weight=1
 
-# Download, check integrity, uncompress and patch the source from app.src
-#ynh_setup_source --dest_dir=$install_dir
-mkdir -p $install_dir/backend
-mkdir -p $install_dir/frontend
-git clone --depth 1 https://github.com/hedgedoc/hedgedoc -b develop $install_dir/backend
-git clone --depth 1 https://github.com/hedgedoc/react-client $install_dir/frontend
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir"
+
+chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -56,7 +54,11 @@ ynh_add_nginx_config
 
 ynh_add_systemd_config
 
-yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
+ynh_add_systemd_config --service="${app}_backend" --template="../conf/backend.service"
+ynh_add_systemd_config --service="${app}_frontend" --template="../conf/frontend.service"
+
+yunohost service add "${app}_backend" --description="Collaborative Markdown editor's backend" --log="/var/log/$app/$app.log"
+yunohost service add "${app}_frontend" --description="Collaborative Markdown editor's frontend" --log="/var/log/$app/$app.log"
 
 #=================================================
 # SPECIFIC SETUP
@@ -78,14 +80,6 @@ pushd "$install_dir/frontend"
 popd
 
 #=================================================
-# SETUP SYSTEMD
-#=================================================
-ynh_script_progression --message="Configuring a systemd service..." --weight=1
-
-ynh_add_systemd_config --service="${app}_backend" --template="../conf/backend.service"
-ynh_add_systemd_config --service="${app}_frontend" --template="../conf/frontend.service"
-
-#=================================================
 # MODIFY A CONFIG FILE
 #=================================================
 ynh_script_progression --message="Modifying a config file..." --weight=1
@@ -103,14 +97,6 @@ ynh_script_progression --message="Securing files and directories..." --weight=1
 # Set permissions to app files
 chown -R $app:$app $install_dir
 chmod o-rwx $install_dir
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=2
-
-yunohost service add "${app}_backend" --description="Collaborative Markdown editor's backend" --log="/var/log/$app/$app.log"
-yunohost service add "${app}_frontend" --description="Collaborative Markdown editor's frontend" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
