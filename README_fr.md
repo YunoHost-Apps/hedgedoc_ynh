@@ -1,51 +1,60 @@
+<!--
+Nota bene : ce README est automatiquement généré par <https://github.com/YunoHost/apps/tree/master/tools/readme_generator>
+Il NE doit PAS être modifié à la main.
+-->
+
 # HedgeDoc pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/hedgedoc.svg)](https://dash.yunohost.org/appci/app/hedgedoc) ![](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/hedgedoc.svg)](https://dash.yunohost.org/appci/app/hedgedoc) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
+
 [![Installer HedgeDoc avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=hedgedoc)
 
-*[Read this readme in english.](./README.md)*
-*[Lire ce readme en français.](./README_fr.md)*
+*[Lire le README dans d'autres langues.](./ALL_README.md)*
 
-> *Ce package vous permet d'installer HedgeDoc rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer HedgeDoc rapidement et simplement sur un serveur YunoHost.*  
+> *Si vous n’avez pas YunoHost, consultez [ce guide](https://yunohost.org/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
-Éditeur collaboratif pour travailler sur des notes en Markdown
+HedgeDoc (anciennement connu sous le nom de CodiMD) est un éditeur open source, basé sur le Web, auto-hébergé et collaboratif.
+Vous pouvez l'utiliser pour collaborer facilement sur des notes, des graphiques et même des présentations en temps réel. Tout ce que vous avez à faire est de partager votre lien de note avec vos collègues et ils sont prêts à partir.
 
 **Version incluse :** 2.0.0~ynh1
 
-**Démo :** https://demo.hedgedoc.org/
+- Collaboration en temps réel
+- Graphiques et diagrammes
+- Révisions
+- Mode présentation
+- Système d'autorisation facile à utiliser
+- Faible configuration système requise
 
-## Captures d'écran
 
-![](./doc/screenshots/screenshot.png)
+**Version incluse :** 1.9.9~ynh3
 
-## Avertissements / informations importantes
+**Démo :** <https://demo.hedgedoc.org/>
 
-## Configuration
+## Captures d’écran
 
-Vous pouvez configurer HedgeDoc en modifiant le fichier `/var/www/hedgedoc/config.json` et en vous aidant de la [documentation](https://github.com/hedgedoc/hedgedoc/blob/master/docs/configuration.md)  
-Lorsque vous avez terminé de modifier la configuration, pour que vos modifications prennent effet, vous devrez exécuter : `sudo systemctl restart hedgedoc`.
+![Capture d’écran de HedgeDoc](./doc/screenshots/screenshot.png)
 
 ## Documentations et ressources
 
-* Site officiel de l'app : https://hedgedoc.org
-* Documentation officielle utilisateur : https://yunohost.org/en/app_hedgedoc
-* Documentation officielle de l'admin : https://docs.hedgedoc.org/
-* Dépôt de code officiel de l'app : https://github.com/hedgedoc/hedgedoc
-* Documentation YunoHost pour cette app : https://yunohost.org/app_hedgedoc
-* Signaler un bug : https://github.com/YunoHost-Apps/hedgedoc_ynh/issues
+- Site officiel de l’app : <https://hedgedoc.org>
+- Documentation officielle de l’admin : <https://docs.hedgedoc.org/>
+- Dépôt de code officiel de l’app : <https://github.com/hedgedoc/hedgedoc>
+- YunoHost Store : <https://apps.yunohost.org/app/hedgedoc>
+- Signaler un bug : <https://github.com/YunoHost-Apps/hedgedoc_ynh/issues>
 
 ## Informations pour les développeurs
 
-Merci de faire vos pull request sur la [branche testing](https://github.com/YunoHost-Apps/hedgedoc_ynh/tree/testing).
+Merci de faire vos pull request sur la [branche `testing`](https://github.com/YunoHost-Apps/hedgedoc_ynh/tree/testing).
 
-Pour essayer la branche testing, procédez comme suit.
-```
+Pour essayer la branche `testing`, procédez comme suit :
+
+```bash
 sudo yunohost app install https://github.com/YunoHost-Apps/hedgedoc_ynh/tree/testing --debug
 ou
 sudo yunohost app upgrade hedgedoc -u https://github.com/YunoHost-Apps/hedgedoc_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** https://yunohost.org/packaging_apps
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>

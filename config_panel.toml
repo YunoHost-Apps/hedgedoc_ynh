@@ -1,0 +1,52 @@
+version = "1.0"
+
+[main]
+name = "HedgeDoc configuration"
+services = ["__APP__"]
+
+    [main.config]
+    name = "Configuration Options"
+
+        [main.config.allow_anonymous]
+        ask = "Allow anonymous usage"
+        type = "boolean"
+        yes = "true"
+        no = "false"
+        help = "Set to allow anonymous usage (default is true)."
+        bind = "allowAnonymous:__INSTALL_DIR__/config.json"
+
+        [main.config.allow_anonymous_edits]
+        ask = "Allow anonymous edits"
+        type = "boolean"
+        yes = "true"
+        no = "false"
+        help = "Allow users to select freely permission, allowing guests to edit existing notes."
+        bind = "allowAnonymousEdits:__INSTALL_DIR__/config.json"
+
+
+        [main.config.allow_email_registration]
+        ask = "Allow email registration"
+        type = "boolean"
+        yes = "true"
+        no = "false"
+        help = "Set to allow registration of new accounts using an email address. If set to false, you can still create accounts using the command line."
+        bind = "allowEmailRegister:__INSTALL_DIR__/config.json"
+
+        [main.config.allow_free_url]
+        ask = "Allow new note creation"
+        type = "boolean"
+        yes = "true"
+        no = "false"
+        help = "Set to allow new note creation by accessing a nonexistent note URL. This is the behavior familiar from Etherpad."
+        bind = "allowFreeURL:__INSTALL_DIR__/config.json"
+
+        [main.config.require_free_url_authentication]
+        ask = "Require FreeURL authentication"
+        type = "boolean"
+        yes = "true"
+        no = "false"
+        help = "Set to require authentication for FreeURL mode style note creation."
+        bind = "requireFreeURLAuthentication:__INSTALL_DIR__/config.json"
+
+
+
