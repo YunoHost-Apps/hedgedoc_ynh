@@ -19,7 +19,7 @@ Il NE doit PAS être modifié à la main.
 HedgeDoc (anciennement connu sous le nom de CodiMD) est un éditeur open source, basé sur le Web, auto-hébergé et collaboratif.
 Vous pouvez l'utiliser pour collaborer facilement sur des notes, des graphiques et même des présentations en temps réel. Tout ce que vous avez à faire est de partager votre lien de note avec vos collègues et ils sont prêts à partir.
 
-**Version incluse :** 2.0.0~ynh1
+### Caractéristiques
 
 - Collaboration en temps réel
 - Graphiques et diagrammes
