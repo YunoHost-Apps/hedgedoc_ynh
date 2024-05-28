@@ -5,9 +5,9 @@ name = "HedgeDoc"
 description.en = "Collaborative editor to work on notes written in Markdown"
 description.fr = "Éditeur collaboratif pour travailler sur des notes en Markdown"
 
-version = "1.9.9~ynh2"
+version = "1.9.9~ynh3"
 
-maintainers = ["eric_G"]
+maintainers = []
 
 [upstream]
 license = "AGPL-3.0-only"
@@ -20,8 +20,11 @@ code = "https://github.com/hedgedoc/hedgedoc"
 yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
+
 ldap = true
+
 sso = true
+
 disk = "50M"
 ram.build = "900M"
 ram.runtime = "50M"

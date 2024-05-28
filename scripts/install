@@ -64,7 +64,7 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 #==============================================
 # INSTALL HEDGEDOC
 #==============================================
-ynh_script_progression --message="Building HedgeDoc... (this will take some time and resources!)" --weight=10
+ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=10
 
 pushd "$install_dir"
 	ynh_use_nodejs
@@ -78,7 +78,7 @@ popd
 ynh_script_progression --message="Modifying a config file..." --weight=1
 
 url_path=${path#/}
-ynh_add_config --template="../conf/config.json.example" --destination="$install_dir/config.json"
+ynh_add_config --template="config.json.example" --destination="$install_dir/config.json"
 
 chmod 600 "$install_dir/config.json"
 chown $app:$app "$install_dir/config.json"
