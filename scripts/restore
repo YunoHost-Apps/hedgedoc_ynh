@@ -43,17 +43,18 @@ ynh_script_progression --message="Restoring system configurations related to $ap
 
 ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
-ynh_restore_file --origin_path="/etc/systemd/system/$app.service"
+ynh_restore_file --origin_path="/etc/systemd/system/${app}_backend.service"
+ynh_restore_file --origin_path="/etc/systemd/system/${app}_frontend.service"
 systemctl enable $app.service --quiet
-
-yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
 
 #=================================================
 # RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
 #=================================================
 ynh_script_progression --message="Reloading NGINX web server and $app's service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action=start --log_path=systemd --line_match="HTTP Server listening"
+# Start a systemd service
+ynh_systemd_action --service_name="${app}_backend" --action=start --log_path=systemd
+ynh_systemd_action --service_name="${app}_frontend" --action=start --log_path=systemd
 
 ynh_systemd_action --service_name=nginx --action=reload
 
