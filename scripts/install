@@ -27,21 +27,6 @@ ynh_app_setting_set --app=$app --key=domain --value=$domain
 ynh_app_setting_set --app=$app --key=path --value=$path_url
 
 #=================================================
-# STANDARD MODIFICATIONS
-#=================================================
-# FIND AND OPEN A PORT
-#=================================================
-ynh_script_progression --message="Finding available ports..." --weight=2
-
-# Find an available port for the backend
-port_backend=$(ynh_find_port --port=3000)
-ynh_app_setting_set --app=$app --key=port_backend --value=$port_backend
-
-# Find an available port for the frontend
-port_frontend=$(ynh_find_port --port=$(($port_backend+1)))
-ynh_app_setting_set --app=$app --key=port_frontend --value=$port_frontend
-
-#=================================================
 # INSTALL DEPENDENCIES
 #=================================================
 ynh_script_progression --message="Installing dependencies..." --weight=20
@@ -78,7 +63,6 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 #==============================================
 # INSTALL HEDGEDOC
 #==============================================
-
 ynh_script_progression --message="Building HedgeDoc backend... (this will take some time and resources!)" --weight=20
 
 pushd "$install_dir/backend"
@@ -99,9 +83,6 @@ popd
 # SETUP SYSTEMD
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --weight=1
-
-ynh_replace_string --match_string="__ENV_PATH__" --replace_string="$PATH" --target_file="../conf/backend.service"
-ynh_replace_string --match_string="__ENV_PATH__" --replace_string="$PATH" --target_file="../conf/frontend.service"
 
 ynh_add_systemd_config --service="${app}_backend" --template="../conf/backend.service"
 ynh_add_systemd_config --service="${app}_frontend" --template="../conf/frontend.service"

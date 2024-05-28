@@ -36,7 +36,7 @@ ynh_backup_if_checksum_is_different --file="$install_dir/config.json"
 domain=$new_domain
 url_path=${new_path#/}
 
-ynh_add_config --template="../conf/config.json.example" --destination="$install_dir/config.json"
+ynh_add_config --template="config.json.example" --destination="$install_dir/config.json"
 
 chmod 400 "$install_dir/config.json"
 chown $app:$app "$install_dir/config.json"
