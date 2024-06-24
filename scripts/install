@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
@@ -23,24 +17,24 @@ require_free_url_authentication=false
 # STORE SETTINGS FROM MANIFEST
 #=================================================
 
-ynh_app_setting_set --app=$app --key=allow_anonymous --value=$allow_anonymous
-ynh_app_setting_set --app=$app --key=allow_email_registration --value=$allow_email_registration
-ynh_app_setting_set --app=$app --key=allow_free_url --value=$allow_free_url
-ynh_app_setting_set --app=$app --key=require_free_url_authentication --value=$require_free_url_authentication
-ynh_app_setting_set --app=$app --key=allow_anonymous_edits --value=$allow_anonymous_edits
+ynh_app_setting_set --key=allow_anonymous --value=$allow_anonymous
+ynh_app_setting_set --key=allow_email_registration --value=$allow_email_registration
+ynh_app_setting_set --key=allow_free_url --value=$allow_free_url
+ynh_app_setting_set --key=require_free_url_authentication --value=$require_free_url_authentication
+ynh_app_setting_set --key=allow_anonymous_edits --value=$allow_anonymous_edits
 
 #=================================================
 # INSTALL DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing dependencies..." --weight=20
+ynh_script_progression "Installing dependencies..."
 
 # Install Nodejs
-ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
+ynh_nodejs_install
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=2
+ynh_script_progression "Setting up source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir=$install_dir
@@ -51,11 +45,11 @@ chown -R $app:www-data "$install_dir"
 #=================================================
 # SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding system configurations related to $app..." --weight=1
+ynh_script_progression "Adding system configurations related to $app..."
 
-ynh_add_nginx_config
+ynh_config_add_nginx
 
-ynh_add_systemd_config
+ynh_config_add_systemd
 
 yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
 
@@ -64,21 +58,21 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 #==============================================
 # INSTALL HEDGEDOC
 #==============================================
-ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=10
+ynh_script_progression "Building $app... (this will take some time and resources!)"
 
 pushd "$install_dir"
-	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn workspaces focus --production
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
+
+	ynh_hide_warnings ynh_exec_as_app node_load_PATH yarn workspaces focus --production
+	ynh_hide_warnings ynh_exec_as_app node_load_PATH yarn cache clean
 popd
 
 #=================================================
 # MODIFY A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Modifying a config file..." --weight=1
+ynh_script_progression "Updating configuration..."
 
 url_path=${path#/}
-ynh_add_config --template="config.json.example" --destination="$install_dir/config.json"
+ynh_config_add --template="config.json.example" --destination="$install_dir/config.json"
 
 chmod 600 "$install_dir/config.json"
 chown $app:$app "$install_dir/config.json"
@@ -86,13 +80,13 @@ chown $app:$app "$install_dir/config.json"
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=2
+ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action=start --log_path=systemd --line_match="HTTP Server listening"
+ynh_systemctl --service=$app --action=start --log_path=systemd --wait_until="HTTP Server listening"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
