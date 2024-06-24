@@ -23,11 +23,8 @@ require_free_url_authentication=false
 # STORE SETTINGS FROM MANIFEST
 #=================================================
 
-ynh_app_setting_set --app=$app --key=allow_anonymous --value=$allow_anonymous
-ynh_app_setting_set --app=$app --key=allow_email_registration --value=$allow_email_registration
-ynh_app_setting_set --app=$app --key=allow_free_url --value=$allow_free_url
-ynh_app_setting_set --app=$app --key=require_free_url_authentication --value=$require_free_url_authentication
-ynh_app_setting_set --app=$app --key=allow_anonymous_edits --value=$allow_anonymous_edits
+ynh_app_setting_set --app=$app --key=domain --value=$domain
+ynh_app_setting_set --app=$app --key=path --value=$path_url
 
 #=================================================
 # INSTALL DEPENDENCIES
@@ -36,17 +33,17 @@ ynh_script_progression --message="Installing dependencies..." --weight=20
 
 # Install Nodejs
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version=$nodejs_version
+ynh_use_nodejs
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=2
+ynh_script_progression --message="Setting up source files..." --weight=1
 
-# Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir=$install_dir
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir"
 
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
+chown -R "$app:www-data" "$install_dir"
 
 #=================================================
 # SYSTEM CONFIGURATION
@@ -55,21 +52,29 @@ ynh_script_progression --message="Adding system configurations related to $app..
 
 ynh_add_nginx_config
 
-ynh_add_systemd_config
+ynh_add_systemd_config --service="${app}_backend" --template="../conf/backend.service"
+ynh_add_systemd_config --service="${app}_frontend" --template="../conf/frontend.service"
 
-yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
+yunohost service add "${app}_backend" --description="Collaborative Markdown editor's backend" --log="/var/log/$app/$app.log"
+yunohost service add "${app}_frontend" --description="Collaborative Markdown editor's frontend" --log="/var/log/$app/$app.log"
 
 #=================================================
 # SPECIFIC SETUP
 #==============================================
 # INSTALL HEDGEDOC
 #==============================================
-ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=10
+ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=20
 
-pushd "$install_dir"
-	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn workspaces focus --production
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
+pushd "$install_dir/backend"
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
+popd 
+
+pushd "$install_dir/frontend"
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
+	# TODO: Fails out of memory in my tests
+	# Production build
+	# Not sure if PORT is necessary here
+	# PORT=$port_frontend REACT_APP_BACKEND_BASE_URL=http://localhost:$port_backend/ yarn build:production
 popd
 
 #=================================================
@@ -77,11 +82,19 @@ popd
 #=================================================
 ynh_script_progression --message="Modifying a config file..." --weight=1
 
-url_path=${path#/}
-ynh_add_config --template="config.json.example" --destination="$install_dir/config.json"
+#path=${path_url:1}
+ynh_add_config --template="env_backend" --destination="$install_dir/backend/.env"
 
-chmod 600 "$install_dir/config.json"
-chown $app:$app "$install_dir/config.json"
+#=================================================
+# GENERIC FINALIZATION
+#=================================================
+# SECURE FILES AND DIRECTORIES
+#=================================================
+ynh_script_progression --message="Securing files and directories..." --weight=1
+
+# Set permissions to app files
+chown -R $app:$app $install_dir
+chmod o-rwx $install_dir
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -89,7 +102,8 @@ chown $app:$app "$install_dir/config.json"
 ynh_script_progression --message="Starting a systemd service..." --weight=2
 
 # Start a systemd service
-ynh_systemd_action --service_name=$app --action=start --log_path=systemd --line_match="HTTP Server listening"
+ynh_systemd_action --service_name="${app}_backend" --action=start --log_path=systemd
+ynh_systemd_action --service_name="${app}_frontend" --action=start --log_path=systemd
 
 #=================================================
 # END OF SCRIPT

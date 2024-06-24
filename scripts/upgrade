@@ -77,11 +77,16 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 #==============================================
 ynh_script_progression --message="Building $app... (this will take some time and resources!)" --weight=10
 
-pushd "$install_dir"
-	ynh_secure_remove /usr/local/share/.cache/yarn 
-	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn workspaces focus --production
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn cache clean
+pushd "$install_dir/backend"
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
+popd 
+
+pushd "$install_dir/frontend"
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
+	# TODO: Fails out of memory in my tests
+	# Production build
+	# Not sure if PORT is necessary here
+	# PORT=$port_frontend REACT_APP_BACKEND_BASE_URL=http://localhost:$port_backend/ yarn build:production
 popd
 
 #=================================================
@@ -100,7 +105,9 @@ chown $app:$app "$install_dir/config.json"
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action=start --log_path=systemd --line_match="HTTP Server listening"
+# Start a systemd service
+ynh_systemd_action --service_name="${app}_backend" --action=start --log_path=systemd
+ynh_systemd_action --service_name="${app}_frontend" --action=start --log_path=systemd
 
 #=================================================
 # END OF SCRIPT
