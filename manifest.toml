@@ -17,13 +17,11 @@ admindoc = "https://docs.hedgedoc.org/"
 code = "https://github.com/hedgedoc/hedgedoc"
 
 [integration]
-yunohost = ">= 11.2.16"
+yunohost = ">= 11.2.28"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
-
 ldap = true
-
 sso = true
 
 disk = "50M"
