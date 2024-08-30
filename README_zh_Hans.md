@@ -5,7 +5,7 @@
 
 # YunoHost 上的 HedgeDoc
 
-[![集成程度](https://dash.yunohost.org/integration/hedgedoc.svg)](https://dash.yunohost.org/appci/app/hedgedoc) ![工作状态](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
+[![集成程度](https://dash.yunohost.org/integration/hedgedoc.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
 
 [![使用 YunoHost 安装 HedgeDoc](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=hedgedoc)
 
