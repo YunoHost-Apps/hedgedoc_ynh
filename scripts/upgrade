@@ -8,35 +8,15 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Ensuring downward compatibility..."
 
-# FIXMEhelpers2.1: maybe replace with: ynh_app_setting_set_default --key=allow_anonymous --value="false"
-if [ -z "${allow_anonymous:-}" ]; then
-	allow_anonymous="false"
-	ynh_app_setting_set --key=allow_anonymous --value=$allow_anonymous
-fi
+ynh_app_setting_set_default --key=allow_anonymous --value="false"
 
-# FIXMEhelpers2.1: maybe replace with: ynh_app_setting_set_default --key=allow_anonymous_edits --value="false"
-if [ -z "${allow_anonymous_edits:-}" ]; then
-	allow_anonymous_edits="false"
-	ynh_app_setting_set --key=allow_anonymous_edits --value=$allow_anonymous_edits
-fi
+ynh_app_setting_set_default --key=allow_anonymous_edits --value="false"
 
-# FIXMEhelpers2.1: maybe replace with: ynh_app_setting_set_default --key=allow_email_registration --value="false"
-if [ -z "${allow_email_registration:-}" ]; then
-	allow_email_registration="false"
-	ynh_app_setting_set --key=allow_email_registration --value=$allow_email_registration
-fi
+ynh_app_setting_set_default --key=allow_email_registration --value="false"
 
-# FIXMEhelpers2.1: maybe replace with: ynh_app_setting_set_default --key=allow_free_url --value="false"
-if [ -z "${allow_free_url:-}" ]; then
-	allow_free_url="false"
-	ynh_app_setting_set --key=allow_free_url --value=$allow_free_url
-fi
+ynh_app_setting_set_default --key=allow_free_url --value="false"
 
-# FIXMEhelpers2.1: maybe replace with: ynh_app_setting_set_default --key=require_free_url_authentication --value="false"
-if [ -z "${require_free_url_authentication:-}" ]; then
-	require_free_url_authentication="false"
-	ynh_app_setting_set --key=require_free_url_authentication --value=$require_free_url_authentication
-fi
+ynh_app_setting_set_default --key=require_free_url_authentication --value="false"
 
 #=================================================
 # STOP SYSTEMD SERVICE
@@ -50,11 +30,8 @@ ynh_systemctl --service=$app --action=stop --log_path=systemd
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-# Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir=$install_dir --keep="config.json"
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "$install_dir"
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
@@ -75,9 +52,8 @@ ynh_script_progression "Building $app... (this will take some time and resources
 
 pushd "$install_dir"
 	ynh_safe_rm /usr/local/share/.cache/yarn
-
-	ynh_hide_warnings ynh_exec_as_app node_load_PATH yarn workspaces focus --production
-	ynh_hide_warnings ynh_exec_as_app node_load_PATH yarn cache clean
+	ynh_hide_warnings ynh_exec_as_app yarn workspaces focus --production
+	ynh_hide_warnings ynh_exec_as_app yarn cache clean
 popd
 
 #=================================================
@@ -87,9 +63,6 @@ ynh_script_progression "Updating configuration..."
 
 url_path=${path#/}
 ynh_config_add --template="config.json.example" --destination="$install_dir/config.json"
-
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 600 "$install_dir/config.json"
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown $app:$app "$install_dir/config.json"
 
 #=================================================
 # START SYSTEMD SERVICE
