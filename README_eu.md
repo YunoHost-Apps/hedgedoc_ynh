@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # HedgeDoc YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/hedgedoc.svg)](https://dash.yunohost.org/appci/app/hedgedoc) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/hedgedoc.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
 
 [![Instalatu HedgeDoc YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=hedgedoc)
 
