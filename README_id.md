@@ -29,7 +29,7 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 - Low system requirements
 
 
-**Versi terkirim:** 1.10.0~ynh1
+**Versi terkirim:** 1.9.9~ynh1
 
 **Demo:** <https://demo.hedgedoc.org/>
 
