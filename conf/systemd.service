@@ -10,7 +10,7 @@ Group=__APP__
 WorkingDirectory=__INSTALL_DIR__
 Environment="PATH=__PATH_WITH_NODEJS__"
 Environment="NODE_ENV=production"
-ExecStart=__NODEJS_DIR__/npm start --production
+ExecStart=/usr/bin/yarn start
 Restart=always
 
 # Sandboxing options to harden security
