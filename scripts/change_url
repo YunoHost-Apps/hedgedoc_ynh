@@ -18,11 +18,8 @@ ynh_script_progression "Updating NGINX web server configuration..."
 ynh_config_change_url_nginx
 
 #=================================================
-# SPECIFIC MODIFICATIONS
-#=================================================
 # CONFIGURE HEDGEDOC
 #=================================================
-
 ynh_backup_if_checksum_is_different "$install_dir/config.json"
 
 domain=$new_domain
@@ -30,15 +27,11 @@ url_path=${new_path#/}
 
 ynh_config_add --template="config.json.example" --destination="$install_dir/config.json"
 
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 400 "$install_dir/config.json"
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown $app:$app "$install_dir/config.json"
-
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-# Start a systemd service
 ynh_systemctl --service=$app --action=start --log_path=systemd --wait_until="HTTP Server listening"
 
 #=================================================
