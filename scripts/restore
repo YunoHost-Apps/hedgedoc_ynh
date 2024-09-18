@@ -15,7 +15,6 @@ ynh_restore "$install_dir"
 #=================================================
 ynh_script_progression "Reinstalling dependencies..."
 
-# Install Nodejs
 ynh_nodejs_install
 
 #=================================================
