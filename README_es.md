@@ -47,7 +47,7 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/hedgedoc_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/hedgedoc_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
