@@ -9,13 +9,9 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "Ensuring downward compatibility..."
 
 ynh_app_setting_set_default --key=allow_anonymous --value="false"
-
 ynh_app_setting_set_default --key=allow_anonymous_edits --value="false"
-
 ynh_app_setting_set_default --key=allow_email_registration --value="false"
-
 ynh_app_setting_set_default --key=allow_free_url --value="false"
-
 ynh_app_setting_set_default --key=require_free_url_authentication --value="false"
 
 #=================================================
