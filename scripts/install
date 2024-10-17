@@ -56,9 +56,10 @@ ynh_script_progression "Building $app... (this will take some time and resources
 ynh_hide_warnings $install_dir/bin/setup
 
 pushd "$install_dir"
-	ynh_use_nodejs
-	ynh_exec_warn_less ynh_exec_as_app bin/setup
-	ynh_exec_warn_less ynh_exec_as_app yarn build
+	ynh_hide_warnings corepack enable && corepack prepare --activate
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn install
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn build
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 bin/setup
 popd
 
 #=================================================

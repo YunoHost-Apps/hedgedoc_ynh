@@ -51,6 +51,7 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://github.com/hedgedoc/hedgedoc/archive/refs/tags/v2.0.0-alpha.3.tar.gz"
         sha256 = "fa1faed0395c515939e41270863b140e42e36c650e1fae254b73b3c0cec1278e"
+
         autoupdate.strategy = "latest_github_tag"
 
     [resources.ports]
