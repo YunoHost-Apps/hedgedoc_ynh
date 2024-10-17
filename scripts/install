@@ -53,8 +53,6 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 #==============================================
 ynh_script_progression "Building $app... (this will take some time and resources!)"
 
-ynh_hide_warnings $install_dir/bin/setup
-
 pushd "$install_dir"
 	ynh_hide_warnings corepack enable && corepack prepare --activate
 	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn install
