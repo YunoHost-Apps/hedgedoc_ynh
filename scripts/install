@@ -54,13 +54,14 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 ynh_script_progression "Building $app... (this will take some time and resources!)"
 
 pushd "$install_dir"
-	#ynh_hide_warnings ynh_exec_as_app bin/setup
-	#npm i -g corepack
+	ynh_hide_warnings corepack enable && corepack install pnpm@latest --activate
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 bin/setup
 	#ynh_hide_warnings ynh_exec_as_app yarn workspaces focus --production
 	#ynh_hide_warnings ynh_exec_as_app yarn cache clean
 
-	./bin/setup
-	ynh_exec_as_app yarn run build
+	#ynh_hide_warnings corepack enable && corepack install pnpm@latest --activate
+	#COREPACK_ENABLE_DOWNLOAD_PROMPT=0 ./bin/setup
+	#ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn run build
 popd
 
 #=================================================
