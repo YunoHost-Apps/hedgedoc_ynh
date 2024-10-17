@@ -48,7 +48,7 @@ ynh_script_progression "Building $app... (this will take some time and resources
 
 pushd "$install_dir"
 	ynh_safe_rm /usr/local/share/.cache/yarn
-	ynh_exec_warn_less ynh_exec_as_app bin/setup
+	ynh_hide_warnings ynh_exec_as_app bin/setup
 popd
 
 #=================================================
