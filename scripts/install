@@ -55,9 +55,12 @@ ynh_script_progression "Building $app... (this will take some time and resources
 
 pushd "$install_dir"
 	#ynh_hide_warnings ynh_exec_as_app bin/setup
-	npm i -g corepack
-	ynh_hide_warnings ynh_exec_as_app yarn workspaces focus --production
-	ynh_hide_warnings ynh_exec_as_app yarn cache clean
+	#npm i -g corepack
+	#ynh_hide_warnings ynh_exec_as_app yarn workspaces focus --production
+	#ynh_hide_warnings ynh_exec_as_app yarn cache clean
+
+	./bin/setup
+	ynh_exec_as_app yarn run build
 popd
 
 #=================================================
