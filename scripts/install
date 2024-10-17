@@ -55,6 +55,8 @@ ynh_script_progression "Building $app... (this will take some time and resources
 
 pushd "$install_dir"
 	ynh_hide_warnings corepack enable && corepack prepare --activate
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn install
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn build
 	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 bin/setup
 	#ynh_hide_warnings ynh_exec_as_app yarn workspaces focus --production
 	#ynh_hide_warnings ynh_exec_as_app yarn cache clean
