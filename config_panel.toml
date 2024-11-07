@@ -1,14 +1,16 @@
 version = "1.0"
 
 [main]
-name = "HedgeDoc configuration"
+name.en = "HedgeDoc configuration"
+name.fr = "Configuration de HedgeDoc"
 services = ["__APP__"]
 
     [main.config]
     name = "Configuration Options"
 
         [main.config.allow_anonymous]
-        ask = "Allow anonymous usage"
+        ask.en = "Allow anonymous usage"
+        ask.fr = "Autoriser l'utilisation anonyme"
         type = "boolean"
         yes = "true"
         no = "false"
@@ -16,7 +18,8 @@ services = ["__APP__"]
         bind = "allowAnonymous:__INSTALL_DIR__/config.json"
 
         [main.config.allow_anonymous_edits]
-        ask = "Allow anonymous edits"
+        ask.en = "Allow anonymous edits"
+        ask.fr = "Autoriser les modifications anonymes"
         type = "boolean"
         yes = "true"
         no = "false"
@@ -25,7 +28,8 @@ services = ["__APP__"]
 
 
         [main.config.allow_email_registration]
-        ask = "Allow email registration"
+        ask.en = "Allow email registration"
+        ask.fr = "Autoriser l'inscription par e-mail"
         type = "boolean"
         yes = "true"
         no = "false"
@@ -33,7 +37,8 @@ services = ["__APP__"]
         bind = "allowEmailRegister:__INSTALL_DIR__/config.json"
 
         [main.config.allow_free_url]
-        ask = "Allow new note creation"
+        ask.en = "Allow new note creation"
+        ask.fr = "Autoriser la création de nouvelles notes"
         type = "boolean"
         yes = "true"
         no = "false"
@@ -41,7 +46,8 @@ services = ["__APP__"]
         bind = "allowFreeURL:__INSTALL_DIR__/config.json"
 
         [main.config.require_free_url_authentication]
-        ask = "Require FreeURL authentication"
+        ask.en = "Require FreeURL authentication"
+        ask.fr = "Exiger l'authentification FreeURL"
         type = "boolean"
         yes = "true"
         no = "false"
