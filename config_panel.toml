@@ -3,7 +3,6 @@ version = "1.0"
 [main]
 name.en = "HedgeDoc configuration"
 name.fr = "Configuration d'HedgeDoc"
-
 services = ["__APP__"]
 
     [main.config]
