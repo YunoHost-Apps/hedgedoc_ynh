@@ -6,7 +6,8 @@ name.fr = "Configuration de HedgeDoc"
 services = ["__APP__"]
 
     [main.config]
-    name = "Configuration Options"
+    name.en = "Configuration Options"
+    name.fr = "Options de configuration"
 
         [main.config.allow_anonymous]
         ask.en = "Allow anonymous usage"
