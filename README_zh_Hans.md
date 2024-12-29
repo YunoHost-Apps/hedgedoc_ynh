@@ -5,7 +5,9 @@
 
 # YunoHost 上的 HedgeDoc
 
-[![集成程度](https://dash.yunohost.org/integration/hedgedoc.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/hedgedoc)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
+![工作状态](https://apps.yunohost.org/badge/state/hedgedoc)
+![维护状态](https://apps.yunohost.org/badge/maintained/hedgedoc)
 
 [![使用 YunoHost 安装 HedgeDoc](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=hedgedoc)
 
@@ -29,7 +31,7 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 - Low system requirements
 
 
-**分发版本：** 1.9.9~ynh1
+**分发版本：** 1.10.0~ynh1
 
 **演示：** <https://demo.hedgedoc.org/>
 
