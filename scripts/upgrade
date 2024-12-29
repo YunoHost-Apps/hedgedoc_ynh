@@ -9,13 +9,9 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "Ensuring downward compatibility..."
 
 ynh_app_setting_set_default --key=allow_anonymous --value="false"
-
 ynh_app_setting_set_default --key=allow_anonymous_edits --value="false"
-
 ynh_app_setting_set_default --key=allow_email_registration --value="false"
-
 ynh_app_setting_set_default --key=allow_free_url --value="false"
-
 ynh_app_setting_set_default --key=require_free_url_authentication --value="false"
 
 #=================================================
@@ -30,7 +26,7 @@ ynh_systemctl --service=$app --action=stop --log_path=systemd
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir=$install_dir --keep="config.json"
+ynh_setup_source --dest_dir=$install_dir --keep="config.json" --full_replace=1
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -51,9 +47,12 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 ynh_script_progression "Building $app... (this will take some time and resources!)"
 
 pushd "$install_dir"
-	ynh_safe_rm /usr/local/share/.cache/yarn
-	ynh_hide_warnings ynh_exec_as_app yarn workspaces focus --production
-	ynh_hide_warnings ynh_exec_as_app yarn cache clean
+	#ynh_safe_rm /usr/local/share/.cache/yarn
+	ynh_hide_warnings corepack enable && corepack prepare --activate
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn cache clean
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn install
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn build
+	ynh_hide_warnings ynh_exec_as_app bin/setup
 popd
 
 #=================================================

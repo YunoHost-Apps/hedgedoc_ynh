@@ -5,7 +5,9 @@
 
 # HedgeDoc для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/hedgedoc.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/hedgedoc)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
+![Состояние работы](https://apps.yunohost.org/badge/state/hedgedoc)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/hedgedoc)
 
 [![Установите HedgeDoc с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=hedgedoc)
 
@@ -29,7 +31,7 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 - Low system requirements
 
 
-**Поставляемая версия:** 1.9.9~ynh1
+**Поставляемая версия:** 1.10.0~ynh1
 
 **Демо-версия:** <https://demo.hedgedoc.org/>
 
