@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # HedgeDoc voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/hedgedoc.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/hedgedoc)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/hedgedoc)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/hedgedoc)
 
 [![HedgeDoc met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=hedgedoc)
 
