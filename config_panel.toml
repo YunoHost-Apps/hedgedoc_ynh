@@ -59,6 +59,3 @@ services = ["__APP__"]
         help.en = "Require authentication for FreeURL mode style note creation."
         help.fr = "Exiger une authentification pour la création de notes de style en mode FreeURL."
         bind = "requireFreeURLAuthentication:__INSTALL_DIR__/config.json"
-
-
-
