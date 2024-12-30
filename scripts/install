@@ -48,6 +48,14 @@ ynh_config_add_systemd
 
 yunohost service add $app --description="Collaborative Markdown editor" --log="/var/log/$app/$app.log"
 
+#=================================================
+# MODIFY A CONFIG FILE
+#=================================================
+ynh_script_progression "Updating configuration..."
+
+url_path=${path#/}
+ynh_config_add --template="config.json.example" --destination="$install_dir/config.json"
+
 #==============================================
 # INSTALL HEDGEDOC
 #==============================================
@@ -59,14 +67,6 @@ pushd "$install_dir"
 	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn build
 	ynh_hide_warnings ynh_exec_as_app bin/setup
 popd
-
-#=================================================
-# MODIFY A CONFIG FILE
-#=================================================
-ynh_script_progression "Updating configuration..."
-
-url_path=${path#/}
-ynh_config_add --template="config.json.example" --destination="$install_dir/config.json"
 
 #=================================================
 # START SYSTEMD SERVICE
