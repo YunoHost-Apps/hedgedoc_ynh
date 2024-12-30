@@ -2,7 +2,7 @@ version = "1.0"
 
 [main]
 name.en = "HedgeDoc configuration"
-name.fr = "Configuration de HedgeDoc"
+name.fr = "Configuration d'HedgeDoc"
 services = ["__APP__"]
 
     [main.config]
@@ -15,7 +15,8 @@ services = ["__APP__"]
         type = "boolean"
         yes = "true"
         no = "false"
-        help = "Set to allow anonymous usage (default is true)."
+        help.en = "Set to allow anonymous usage (default is true)."
+        help.fr = "Définir pour autoriser l'utilisation anonyme (la valeur par défaut est vrai)."
         bind = "allowAnonymous:__INSTALL_DIR__/config.json"
 
         [main.config.allow_anonymous_edits]
@@ -24,7 +25,8 @@ services = ["__APP__"]
         type = "boolean"
         yes = "true"
         no = "false"
-        help = "Allow users to select freely permission, allowing guests to edit existing notes."
+        help.en = "Allow users to select freely permission, allowing guests to edit existing notes."
+        help.fr = "Permettre aux utilisateurs de sélectionner librement les autorisations, permettant aux invités de modifier les notes existantes."
         bind = "allowAnonymousEdits:__INSTALL_DIR__/config.json"
 
 
@@ -34,7 +36,8 @@ services = ["__APP__"]
         type = "boolean"
         yes = "true"
         no = "false"
-        help = "Set to allow registration of new accounts using an email address. If set to false, you can still create accounts using the command line."
+        help.en = "Set to allow registration of new accounts using an email address. If set to false, you can still create accounts using the command line."
+        help.fr = "Configurer pour autoriser l'enregistrement de nouveaux comptes à l'aide d'une adresse e-mail. Si cette option est définie sur false, vous pouvez toujours créer des comptes à l'aide de la ligne de commande."
         bind = "allowEmailRegister:__INSTALL_DIR__/config.json"
 
         [main.config.allow_free_url]
@@ -43,7 +46,8 @@ services = ["__APP__"]
         type = "boolean"
         yes = "true"
         no = "false"
-        help = "Set to allow new note creation by accessing a nonexistent note URL. This is the behavior familiar from Etherpad."
+        help.en = "Set to allow new note creation by accessing a nonexistent note URL. This is the behavior familiar from Etherpad."
+        help.fr = "Permet de créer une nouvelle note en accédant à une URL de note inexistante. Il s'agit du comportement habituel d'Etherpad."
         bind = "allowFreeURL:__INSTALL_DIR__/config.json"
 
         [main.config.require_free_url_authentication]
@@ -52,8 +56,6 @@ services = ["__APP__"]
         type = "boolean"
         yes = "true"
         no = "false"
-        help = "Set to require authentication for FreeURL mode style note creation."
+        help.en = "Require authentication for FreeURL mode style note creation."
+        help.fr = "Exiger une authentification pour la création de notes de style en mode FreeURL."
         bind = "requireFreeURLAuthentication:__INSTALL_DIR__/config.json"
-
-
-
