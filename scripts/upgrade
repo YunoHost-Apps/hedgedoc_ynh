@@ -26,7 +26,7 @@ ynh_systemctl --service=$app --action=stop --log_path=systemd
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir=$install_dir --keep="config.json"
+ynh_setup_source --dest_dir=$install_dir --full_replace --keep="config.json"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -47,11 +47,12 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 ynh_script_progression "Building $app... (this will take some time and resources!)"
 
 pushd "$install_dir"
-	ynh_safe_rm /usr/local/share/.cache/yarn
+	#ynh_safe_rm /usr/local/share/.cache/yarn
 	ynh_hide_warnings corepack enable && corepack prepare --activate
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn cache clean
 	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn install
 	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 yarn build
-	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 bin/setup
+	ynh_hide_warnings ynh_exec_as_app bin/setup
 popd
 
 #=================================================

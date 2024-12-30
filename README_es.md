@@ -5,7 +5,9 @@ No se debe editar a mano.
 
 # HedgeDoc para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/hedgedoc.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/hedgedoc)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
+![Estado funcional](https://apps.yunohost.org/badge/state/hedgedoc)
+![Estado En Mantención](https://apps.yunohost.org/badge/maintained/hedgedoc)
 
 [![Instalar HedgeDoc con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=hedgedoc)
 

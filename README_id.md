@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # HedgeDoc untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/hedgedoc.svg)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/hedgedoc.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/hedgedoc.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/hedgedoc)](https://ci-apps.yunohost.org/ci/apps/hedgedoc/)
+![Status kerja](https://apps.yunohost.org/badge/state/hedgedoc)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/hedgedoc)
 
 [![Pasang HedgeDoc dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=hedgedoc)
 

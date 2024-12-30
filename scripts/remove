@@ -14,9 +14,9 @@ fi
 
 ynh_config_remove_systemd
 
-ynh_nodejs_remove
-
 ynh_config_remove_nginx
+
+ynh_nodejs_remove
 
 #=================================================
 # END OF SCRIPT
