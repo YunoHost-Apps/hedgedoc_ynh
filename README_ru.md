@@ -31,7 +31,7 @@ You can use it to easily collaborate on notes, graphs and even presentations in 
 - Low system requirements
 
 
-**Поставляемая версия:** 1.10.0~ynh2
+**Поставляемая версия:** 1.10.0~ynh3
 
 **Демо-версия:** <https://demo.hedgedoc.org/>
 
