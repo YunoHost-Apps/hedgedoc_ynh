@@ -53,7 +53,6 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 #=================================================
 ynh_script_progression "Updating configuration..."
 
-url_path=${path#/}
 ynh_config_add --template="config.json.example" --destination="$install_dir/config.json"
 
 #==============================================
