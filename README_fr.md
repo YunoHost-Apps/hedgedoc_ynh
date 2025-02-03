@@ -31,7 +31,7 @@ Vous pouvez l'utiliser pour collaborer facilement sur des notes, des graphiques 
 - Faible configuration système requise
 
 
-**Version incluse :** 1.10.0~ynh3
+**Version incluse :** 1.10.1~ynh1
 
 **Démo :** <https://demo.hedgedoc.org/>
 
