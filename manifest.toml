@@ -5,7 +5,7 @@ name = "HedgeDoc"
 description.en = "Collaborative editor to work on notes written in Markdown"
 description.fr = "Éditeur collaboratif pour travailler sur des notes en Markdown"
 
-version = "1.10.2~ynh2"
+version = "1.10.2~ynh1"
 
 maintainers = []
 
@@ -23,6 +23,7 @@ architectures = "all"
 multi_instance = true
 
 ldap = true
+
 sso = true
 
 disk = "50M"
