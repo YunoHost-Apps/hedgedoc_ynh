@@ -22,6 +22,7 @@ ynh_config_change_url_nginx
 #=================================================
 ynh_backup_if_checksum_is_different "$install_dir/config.json"
 
+path=${path%/}
 ynh_config_add --template="config.json.example" --destination="$install_dir/config.json"
 
 #=================================================
