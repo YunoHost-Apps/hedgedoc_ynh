@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -22,13 +21,6 @@ ynh_app_setting_set --key=allow_email_registration --value=$allow_email_registra
 ynh_app_setting_set --key=allow_free_url --value=$allow_free_url
 ynh_app_setting_set --key=require_free_url_authentication --value=$require_free_url_authentication
 ynh_app_setting_set --key=allow_anonymous_edits --value=$allow_anonymous_edits
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_nodejs_install
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
