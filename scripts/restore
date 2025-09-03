@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
@@ -9,13 +8,6 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "Restoring HedgeDoc main directory..."
 
 ynh_restore "$install_dir"
-
-#=================================================
-# REINSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Reinstalling dependencies..."
-
-ynh_nodejs_install
 
 #=================================================
 # RESTORE THE POSTGRESQL DATABASE
