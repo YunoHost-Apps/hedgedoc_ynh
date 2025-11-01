@@ -62,7 +62,7 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.apt]
-    packages = "postgresql, yarn"
+    packages = "postgresql"
 
     [resources.database]
     type = "postgresql"
