@@ -10,7 +10,7 @@ Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
 Environment="PATH=__PATH_WITH_NODEJS__"
 Environment="NODE_ENV=production"
-ExecStart=/usr/bin/yarn start
+ExecStart=__NODEJS_DIR__/corepack yarn start
 Restart=always
 RestartSec=2s
 
