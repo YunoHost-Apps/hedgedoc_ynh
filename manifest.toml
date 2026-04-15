@@ -5,7 +5,7 @@ name = "HedgeDoc"
 description.en = "Collaborative editor to work on notes written in Markdown"
 description.fr = "Éditeur collaboratif pour travailler sur des notes en Markdown"
 
-version = "1.10.6~ynh1"
+version = "1.10.8~ynh1"
 
 maintainers = []
 
@@ -17,7 +17,7 @@ admindoc = "https://docs.hedgedoc.org/"
 code = "https://github.com/hedgedoc/hedgedoc"
 
 [integration]
-yunohost = ">= 12.1.38"
+yunohost = ">= 12.1.39"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
@@ -48,8 +48,8 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/hedgedoc/hedgedoc/archive/refs/tags/1.10.6.tar.gz"
-        sha256 = "aff2eee0bb70805f17675110fbe454c68ce5c24e4b681fffbc4d9aa1cb902f9a"
+        url = "https://github.com/hedgedoc/hedgedoc/archive/refs/tags/1.10.8.tar.gz"
+        sha256 = "c4cb62eb7b05aaa8185ce8c06835a8692c766a96d5f20f16f709e35e5e96fe3f"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.ports]
