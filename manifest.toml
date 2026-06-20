@@ -5,7 +5,7 @@ name = "HedgeDoc"
 description.en = "Collaborative editor to work on notes written in Markdown"
 description.fr = "Éditeur collaboratif pour travailler sur des notes en Markdown"
 
-version = "1.10.8~ynh1"
+version = "1.11.0~ynh1"
 
 maintainers = []
 
@@ -48,8 +48,8 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/hedgedoc/hedgedoc/archive/refs/tags/1.10.8.tar.gz"
-        sha256 = "c4cb62eb7b05aaa8185ce8c06835a8692c766a96d5f20f16f709e35e5e96fe3f"
+        url = "https://github.com/hedgedoc/hedgedoc/archive/refs/tags/1.11.0.tar.gz"
+        sha256 = "5df6ef3cfd6f431fd9c1b2c763a6d3d7033b66f887c82bd8b636692f6b7c021c"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.ports]
@@ -68,4 +68,4 @@ ram.runtime = "50M"
     type = "postgresql"
 
     [resources.nodejs]
-    version = "22"
+    version = "24"
