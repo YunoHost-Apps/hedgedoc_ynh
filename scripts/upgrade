@@ -18,7 +18,7 @@ ynh_app_setting_set_default --key=require_free_url_authentication --value="false
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemctl --service=$app --action=stop --log_path=systemd
+ynh_systemctl --service=$app --action=stop
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -66,7 +66,7 @@ ynh_config_add --template="config.json.example" --destination="$install_dir/conf
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service=$app --action=start --log_path=systemd --wait_until="HTTP Server listening"
+ynh_systemctl --service=$app --action=start
 
 #=================================================
 # END OF SCRIPT
