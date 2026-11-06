@@ -33,7 +33,7 @@ yunohost service add $app --description="Collaborative Markdown editor" --log="/
 #=================================================
 ynh_script_progression "Reloading NGINX web server and $app's service..."
 
-ynh_systemctl --service=$app --action=start --log_path=systemd --wait_until="HTTP Server listening"
+ynh_systemctl --service=$app --action=start
 
 ynh_systemctl --service=nginx --action=reload
 
